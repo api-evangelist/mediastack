@@ -1,0 +1,32 @@
+aid: mediastack
+name: Mediastack
+description: "Free, Simple REST API for Live News & Blog Articles"
+url: https://mediastack.com?utm_source=Github&utm_medium=Referral&utm_campaign=Public-apis-repo-Best-sellers
+specificationVersion: '0.20'
+created: '2026-05-28'
+modified: '2026-05-28'
+x-source: public-apis/public-apis
+x-category: "News"
+x-tier: 3
+x-tier-reason: bulk-registered-from-public-apis
+tags:
+  - News
+  - Public APIs
+apis:
+  - name: Mediastack
+    description: "Free, Simple REST API for Live News & Blog Articles"
+    humanURL: https://mediastack.com?utm_source=Github&utm_medium=Referral&utm_campaign=Public-apis-repo-Best-sellers
+    baseURL: https://mediastack.com?utm_source=Github&utm_medium=Referral&utm_campaign=Public-apis-repo-Best-sellers
+    tags:
+      - News
+    properties:
+      - type: Documentation
+        url: https://mediastack.com?utm_source=Github&utm_medium=Referral&utm_campaign=Public-apis-repo-Best-sellers
+common:
+  - type: Website
+    url: https://mediastack.com?utm_source=Github&utm_medium=Referral&utm_campaign=Public-apis-repo-Best-sellers
+  - type: PublicAPIsListing
+    url: https://github.com/public-apis/public-apis
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
