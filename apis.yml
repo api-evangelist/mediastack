@@ -1,32 +1,171 @@
 aid: mediastack
 name: Mediastack
-description: "Free, Simple REST API for Live News & Blog Articles"
-url: https://mediastack.com?utm_source=Github&utm_medium=Referral&utm_campaign=Public-apis-repo-Best-sellers
+description: >-
+  Mediastack is a free and paid REST API by apilayer for live, historical, and blog news
+  articles aggregated from more than 7,500 publishers across 50+ countries and 13
+  languages. It exposes a /v1/news endpoint for keyword-, source-, country-, language-,
+  category-, and date-filtered search, and a /v1/sources endpoint for browsing the
+  underlying publisher catalog.
+url: https://mediastack.com
+humanURL: https://mediastack.com
+baseURL: https://api.mediastack.com/v1
+image: https://mediastack.com/site_images/mediastack_logo_dark.svg
 specificationVersion: '0.20'
 created: '2026-05-28'
-modified: '2026-05-28'
+modified: '2026-05-30'
 x-source: public-apis/public-apis
-x-category: "News"
-x-tier: 3
-x-tier-reason: bulk-registered-from-public-apis
+x-category: News
+x-tier: 2
+x-tier-reason: company-tiered-commercial-news-aggregation
 tags:
   - News
+  - News Aggregation
+  - Media
+  - Apilayer
   - Public APIs
 apis:
-  - name: Mediastack
-    description: "Free, Simple REST API for Live News & Blog Articles"
-    humanURL: https://mediastack.com?utm_source=Github&utm_medium=Referral&utm_campaign=Public-apis-repo-Best-sellers
-    baseURL: https://mediastack.com?utm_source=Github&utm_medium=Referral&utm_campaign=Public-apis-repo-Best-sellers
+  - name: Mediastack News API
+    description: >-
+      Live, historical, and blog news search plus publisher source discovery. Returns
+      JSON with a pagination + data envelope, secured by an access_key query parameter.
+    humanURL: https://mediastack.com/documentation
+    baseURL: https://api.mediastack.com/v1
     tags:
       - News
+      - Sources
     properties:
       - type: Documentation
-        url: https://mediastack.com?utm_source=Github&utm_medium=Referral&utm_campaign=Public-apis-repo-Best-sellers
+        url: https://docs.apilayer.com/mediastack/docs/api-documentation
+      - type: APIReference
+        url: https://mediastack.com/documentation
+      - type: Quickstart
+        url: https://mediastack.com/documentation#quickstart
+      - type: Authentication
+        url: https://mediastack.com/documentation#authentication
+      - type: OpenAPI
+        url: openapi/mediastack-openapi.yml
+      - type: JSONSchema
+        url: json-schema/mediastack-news-article-schema.json
+        title: News Article Schema
+      - type: JSONSchema
+        url: json-schema/mediastack-source-schema.json
+        title: Source Schema
+      - type: JSONSchema
+        url: json-schema/mediastack-pagination-schema.json
+        title: Pagination Schema
+      - type: JSONSchema
+        url: json-schema/mediastack-error-schema.json
+        title: Error Schema
+      - type: JSONStructure
+        url: json-structure/mediastack-news-article-structure.json
+        title: News Article Structure
+      - type: JSONStructure
+        url: json-structure/mediastack-source-structure.json
+        title: Source Structure
+      - type: Example
+        url: examples/mediastack-search-news-example.json
+        title: Search News Example
+      - type: Example
+        url: examples/mediastack-list-sources-example.json
+        title: List Sources Example
+      - type: Example
+        url: examples/mediastack-historical-news-example.json
+        title: Historical News Example
+      - type: NaftikoCapability
+        url: capabilities/mediastack-news.yaml
+        title: News Capability
+      - type: NaftikoCapability
+        url: capabilities/mediastack-sources.yaml
+        title: Sources Capability
 common:
   - type: Website
-    url: https://mediastack.com?utm_source=Github&utm_medium=Referral&utm_campaign=Public-apis-repo-Best-sellers
+    url: https://mediastack.com
+  - type: Portal
+    url: https://mediastack.com/dashboard
+  - type: SignUp
+    url: https://mediastack.com/signup/free
+  - type: Pricing
+    url: https://mediastack.com/product
+  - type: TermsOfService
+    url: https://mediastack.com/terms
+  - type: PrivacyPolicy
+    url: https://mediastack.com/privacy
+  - type: Support
+    url: https://mediastack.com/contact
+  - type: FAQ
+    url: https://mediastack.com/documentation#faq
+  - type: GitHubRepository
+    url: https://github.com/apilayer/mediastack
   - type: PublicAPIsListing
     url: https://github.com/public-apis/public-apis
+  - type: JSON-LD
+    url: json-ld/mediastack-context.jsonld
+  - type: SpectralRules
+    url: rules/mediastack-rules.yml
+  - type: Vocabulary
+    url: vocabulary/mediastack-vocabulary.yml
+  - type: Plans
+    url: plans/mediastack-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/mediastack-rate-limits.yml
+  - type: FinOps
+    url: finops/mediastack-finops.yml
+  - type: Features
+    data:
+      - name: Live News Data
+        description: Real-time aggregation of articles from 7,500+ global news publishers.
+      - name: Historical News
+        description: Date-bounded lookups of past articles via the date query parameter (paid plans).
+      - name: Multi-Language Coverage
+        description: Articles indexed across 13 languages including English, German, Spanish, French, Chinese, and Arabic.
+      - name: Multi-Country Coverage
+        description: Filter by 50+ country codes using ISO 3166-1 alpha-2.
+      - name: Category Filtering
+        description: Restrict to general, business, entertainment, health, science, sports, or technology.
+      - name: Source Filtering
+        description: Include/exclude lists of specific publishers via comma-separated IDs.
+      - name: Keyword Search
+        description: Full-text search across article title, description, and body.
+      - name: Publisher Catalog
+        description: Browse the /sources catalog by country, language, or category.
+      - name: HTTPS Encryption
+        description: Encrypted transport on Standard plan and above.
+      - name: Commercial Use License
+        description: Permitted on Standard plan and above.
+  - type: UseCases
+    data:
+      - name: News Aggregator Apps
+        description: Power consumer-facing news readers with category- and language-filtered feeds.
+      - name: Media Monitoring
+        description: Track brand, executive, product, or competitor mentions across global press.
+      - name: Investor Research
+        description: Stream business-tagged headlines into trading dashboards.
+      - name: AI Training Corpora
+        description: Sample current-events text for fine-tuning and retrieval-augmented generation.
+      - name: Trend Analysis
+        description: Tally publication volume and sentiment around recurring keywords.
+      - name: Newsletter Curation
+        description: Auto-generate daily digests by country, language, or topic.
+  - type: Integrations
+    data:
+      - name: apilayer Marketplace
+        description: Mediastack is one of several APIs in the apilayer marketplace alongside marketstack, currencylayer, weatherstack, and ipapi.
+      - name: REST + JSON
+        description: Standard HTTPS+JSON makes it trivial to integrate with any HTTP client library.
+      - name: Postman / Insomnia
+        description: Manual import of the OpenAPI spec into common API clients.
+  - type: Solutions
+    data:
+      - name: Free Plan
+        description: Evaluation tier, 100 requests/month, HTTP only, no historical data, no commercial use.
+      - name: Standard Plan
+        description: $24.99/month, 10k requests, HTTPS, historical data, commercial use.
+      - name: Professional Plan
+        description: $99.99/month, 50k requests, lower overage rate.
+      - name: Business Plan
+        description: $249.99/month, 250k requests, lowest published overage rate.
+      - name: Enterprise Plan
+        description: Custom volume, platinum support, custom solutions.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

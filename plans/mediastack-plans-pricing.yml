@@ -1,0 +1,233 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Mediastack
+providerId: mediastack
+created: '2026-05-30'
+modified: '2026-05-30'
+reconciled: true
+tags:
+  - News
+  - Aggregation
+  - Media
+  - Apilayer
+description: >-
+  Mediastack uses a 5-tier subscription model (Free, Standard, Professional, Business,
+  Enterprise) priced on a monthly request quota. All paid tiers unlock HTTPS, historical
+  data, and commercial use; overage is billed per request at a decreasing rate as the
+  plan tier rises. Annual billing offers up to 15% savings versus monthly.
+sources:
+  - https://mediastack.com/product
+  - https://mediastack.com/documentation
+plans:
+  - id: mediastack-free
+    name: Free
+    type: freemium
+    description: Entry-level plan for evaluation; HTTP only, delayed data, no historical access, no commercial use.
+    entries:
+      - label: Monthly Requests
+        name: monthly_requests
+        type: quota
+        metric: request
+        limit: 100
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$0'
+        userMultiplied: false
+    elements:
+      - name: All news sources
+      - name: All 13 languages
+      - name: Delayed news data
+      - name: HTTP only (no HTTPS)
+      - name: No support
+      - name: No commercial use
+  - id: mediastack-standard
+    name: Standard
+    type: subscription
+    description: Entry-level paid plan with HTTPS, live data, historical access, and commercial use.
+    entries:
+      - label: Monthly Subscription
+        name: monthly_subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$24.99'
+        userMultiplied: false
+      - label: Annual Subscription
+        name: annual_subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$22.99'
+        userMultiplied: false
+      - label: Included Monthly Requests
+        name: included_monthly_requests
+        type: quota
+        metric: request
+        limit: 10000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: Overage Per Request
+        name: overage_per_request
+        type: metered
+        metric: request
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$0.009996'
+        userMultiplied: false
+    elements:
+      - name: Live news data
+      - name: Historical news data
+      - name: HTTPS encryption
+      - name: All news sources
+      - name: All 13 languages
+      - name: Commercial use
+      - name: Standard support
+  - id: mediastack-professional
+    name: Professional
+    type: subscription
+    description: Mid-tier plan with a 5x request quota and a lower per-request overage rate.
+    entries:
+      - label: Monthly Subscription
+        name: monthly_subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$99.99'
+        userMultiplied: false
+      - label: Annual Subscription
+        name: annual_subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$87.99'
+        userMultiplied: false
+      - label: Included Monthly Requests
+        name: included_monthly_requests
+        type: quota
+        metric: request
+        limit: 50000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: Overage Per Request
+        name: overage_per_request
+        type: metered
+        metric: request
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$0.0079992'
+        userMultiplied: false
+    elements:
+      - name: Live news data
+      - name: Historical news data
+      - name: HTTPS encryption
+      - name: All news sources
+      - name: All 13 languages
+      - name: Commercial use
+      - name: Standard support
+  - id: mediastack-business
+    name: Business
+    type: subscription
+    description: High-volume plan with 250k included requests/month and the lowest per-request overage rate.
+    entries:
+      - label: Monthly Subscription
+        name: monthly_subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$249.99'
+        userMultiplied: false
+      - label: Annual Subscription
+        name: annual_subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$212.99'
+        userMultiplied: false
+      - label: Included Monthly Requests
+        name: included_monthly_requests
+        type: quota
+        metric: request
+        limit: 250000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: Overage Per Request
+        name: overage_per_request
+        type: metered
+        metric: request
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$0.00399984'
+        userMultiplied: false
+    elements:
+      - name: Live news data
+      - name: Historical news data
+      - name: HTTPS encryption
+      - name: All news sources
+      - name: All 13 languages
+      - name: Commercial use
+      - name: Standard support
+  - id: mediastack-enterprise
+    name: Enterprise
+    type: enterprise
+    description: Custom-volume plan with platinum support and custom solutions; pricing on request.
+    entries:
+      - label: Custom Subscription
+        name: custom_subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: contact sales
+        userMultiplied: false
+      - label: Custom Monthly Requests
+        name: custom_monthly_requests
+        type: quota
+        metric: request
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: Custom request volume
+      - name: All capabilities of lower tiers
+      - name: Platinum support available
+      - name: Custom solutions

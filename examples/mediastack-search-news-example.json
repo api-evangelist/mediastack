@@ -1,0 +1,40 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.mediastack.com/v1/news?access_key=YOUR_ACCESS_KEY&countries=us,gb&categories=business,technology&languages=en&keywords=artificial%20intelligence&limit=2&offset=0&sort=published_desc"
+  },
+  "response": {
+    "pagination": {
+      "limit": 2,
+      "offset": 0,
+      "count": 2,
+      "total": 1842
+    },
+    "data": [
+      {
+        "author": "Jane Doe",
+        "title": "OpenAI Unveils Next-Generation Reasoning Model",
+        "description": "The release pushes the frontier of reasoning benchmarks while keeping latency low.",
+        "url": "https://example.com/openai-next-gen",
+        "source": "The Verge",
+        "image": "https://example.com/img/openai.jpg",
+        "category": "technology",
+        "language": "en",
+        "country": "us",
+        "published_at": "2026-05-28T14:32:00+00:00"
+      },
+      {
+        "author": null,
+        "title": "Bank of England Holds Rates Steady",
+        "description": "Policymakers cited persistent services inflation in their decision.",
+        "url": "https://example.com/boe-rates",
+        "source": "BBC News",
+        "image": null,
+        "category": "business",
+        "language": "en",
+        "country": "gb",
+        "published_at": "2026-05-28T11:00:00+00:00"
+      }
+    ]
+  }
+}

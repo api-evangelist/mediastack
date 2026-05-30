@@ -1,0 +1,123 @@
+naftiko: "1.0.0-alpha2"
+
+info:
+  label: "Mediastack News API — Sources"
+  description: >-
+    Sources — discover the publisher catalog. 1 operation. Lead operation: List News Sources.
+    Self-contained Naftiko capability covering one Mediastack business surface.
+  tags:
+    - Mediastack
+    - Sources
+    - Catalog
+  created: "2026-05-30"
+  modified: "2026-05-30"
+
+binds:
+  - namespace: env
+    keys:
+      MEDIASTACK_ACCESS_KEY: MEDIASTACK_ACCESS_KEY
+
+capability:
+
+  consumes:
+    - type: http
+      namespace: "mediastack-sources"
+      baseUri: "https://api.mediastack.com/v1"
+      description: "Mediastack News API — Sources business capability. Self-contained, no shared references."
+      authentication:
+        type: apikey
+        key: access_key
+        value: "{{env.MEDIASTACK_ACCESS_KEY}}"
+        placement: query
+      resources:
+        - name: "sources"
+          path: "/sources"
+          operations:
+            - name: "listSources"
+              method: GET
+              description: "List news sources, publishers, and blogs indexed by Mediastack."
+              inputParameters:
+                - name: "search"
+                  in: query
+                  type: string
+                  required: false
+                  description: "Free-text search across source name and URL."
+                - name: "countries"
+                  in: query
+                  type: string
+                  required: false
+                  description: "Comma-separated ISO 3166-1 alpha-2 country codes."
+                - name: "languages"
+                  in: query
+                  type: string
+                  required: false
+                  description: "Comma-separated ISO 639-1 language codes."
+                - name: "categories"
+                  in: query
+                  type: string
+                  required: false
+                  description: "Comma-separated categories."
+                - name: "limit"
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Page size, 1-100."
+                - name: "offset"
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Pagination offset."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      namespace: "mediastack-sources-rest"
+      port: 8080
+      description: "REST adapter for Mediastack News API — Sources. One Spectral-compliant resource per consumed operation, prefixed with /v1."
+      resources:
+        - path: "/v1/sources"
+          name: "sources"
+          description: "REST surface for the news source catalog."
+          operations:
+            - method: GET
+              name: "listSources"
+              description: "List news sources and publishers."
+              call: "mediastack-sources.listSources"
+              with:
+                search: "rest.search"
+                countries: "rest.countries"
+                languages: "rest.languages"
+                categories: "rest.categories"
+                limit: "rest.limit"
+                offset: "rest.offset"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      namespace: "mediastack-sources-mcp"
+      port: 9090
+      transport: http
+      description: "MCP adapter for Mediastack News API — Sources. One tool per consumed operation, routed inline through this capability's consumes block."
+      tools:
+        - name: "list-sources"
+          description: "List news sources and publishers."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: "mediastack-sources.listSources"
+          with:
+            search: "tools.search"
+            countries: "tools.countries"
+            languages: "tools.languages"
+            categories: "tools.categories"
+            limit: "tools.limit"
+            offset: "tools.offset"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/mediastack/json-schema/mediastack-source-schema.json",
+  "title": "Source",
+  "description": "A news source / publisher record returned by the Mediastack /v1/sources endpoint.",
+  "type": "object",
+  "required": ["id", "name"],
+  "properties": {
+    "id": { "type": "string", "description": "Stable source identifier (used in sources= filter)." },
+    "name": { "type": "string", "description": "Display name of the publisher." },
+    "category": {
+      "type": "string",
+      "enum": ["general", "business", "entertainment", "health", "science", "sports", "technology"]
+    },
+    "country": { "type": "string", "description": "ISO 3166-1 alpha-2 country code." },
+    "language": { "type": "string", "description": "ISO 639-1 language code." },
+    "url": { "type": "string", "format": "uri", "description": "Publisher homepage URL." }
+  },
+  "additionalProperties": false
+}

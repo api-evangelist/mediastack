@@ -1,0 +1,74 @@
+name: Mediastack Vocabulary
+description: |
+  Controlled vocabulary covering the Mediastack News API's operational, content, and
+  capability dimensions. Used to align mediastack data with the wider API Evangelist
+  network taxonomy.
+url: https://github.com/api-evangelist/mediastack/vocabulary/mediastack-vocabulary.yml
+created: '2026-05-30'
+modified: '2026-05-30'
+domains:
+  - name: News
+    description: Live and historical news articles aggregated from global publishers.
+    terms:
+      - article
+      - headline
+      - byline
+      - publisher
+      - source
+      - feed
+      - publication
+      - dateline
+      - aggregator
+  - name: Sources
+    description: Catalog of news outlets, blogs, and publishers indexed by mediastack.
+    terms:
+      - publisher
+      - outlet
+      - blog
+      - wire-service
+      - broadcaster
+  - name: Categories
+    description: Topical classifications applied to articles and sources.
+    terms:
+      - general
+      - business
+      - entertainment
+      - health
+      - science
+      - sports
+      - technology
+  - name: Languages
+    description: ISO 639-1 codes supported by mediastack.
+    terms: [ar, de, en, es, fr, he, it, nl, "no", pt, ru, se, zh]
+  - name: Geography
+    description: ISO 3166-1 alpha-2 country codes filterable on articles and sources.
+    terms: [us, gb, de, fr, it, es, br, in, jp, cn, ca, au, mx, ru, za]
+operational:
+  - name: Access Key
+    description: Static API key passed via the access_key query parameter.
+  - name: Quota
+    description: Monthly request budget defined by the subscription plan.
+  - name: HTTPS Encryption
+    description: Encrypted transport, gated on Standard plan and above.
+  - name: Historical Data
+    description: Past-dated news lookup via the date parameter; paid plans only.
+  - name: Commercial Use
+    description: Licensing dimension; permitted on Standard plan and above.
+capabilities:
+  - name: Search News
+    description: Free-text and faceted retrieval of live articles.
+  - name: Discover Sources
+    description: Browse the publisher catalog by language, country, and category.
+  - name: Historical Lookup
+    description: Time-bounded retrieval of past articles using the date parameter.
+  - name: Trending Watch
+    description: Schedule recurring keyword searches to monitor breaking topics.
+  - name: Brand Monitoring
+    description: Keyword-based surveillance for company, product, or executive mentions.
+finops:
+  - name: Quota Burn Rate
+    description: Monthly request consumption tracked against the plan limit.
+  - name: Overage Cost
+    description: Per-request charge applied beyond the plan's included quota.
+  - name: Plan Tier
+    description: Free / Standard / Professional / Business / Enterprise.

@@ -1,0 +1,113 @@
+extends:
+  - spectral:oas
+documentationUrl: https://mediastack.com/documentation
+functions: []
+rules:
+  mediastack-info-contact:
+    description: Every Mediastack OpenAPI spec must declare a contact for support routing.
+    message: '{{property}} is missing'
+    severity: error
+    given: $.info
+    then:
+      - field: contact
+        function: truthy
+      - field: contact.url
+        function: truthy
+  mediastack-server-base-url:
+    description: Server URL must be the canonical api.mediastack.com base.
+    message: 'Server URL must be https://api.mediastack.com/v1'
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: '^https?://api\.mediastack\.com/v1$'
+  mediastack-api-key-auth:
+    description: All paths must be secured with the access_key API key security scheme.
+    message: 'Mediastack endpoints must apply the ApiKeyAuth security requirement.'
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete].security
+    then:
+      function: truthy
+  mediastack-access-key-parameter:
+    description: Every operation must accept access_key as a query parameter.
+    message: 'Operation is missing the access_key query parameter.'
+    severity: error
+    given: $.paths[*][get].parameters
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+          contains:
+            type: object
+            properties:
+              name:
+                const: access_key
+              in:
+                const: query
+  mediastack-title-case-summary:
+    description: Operation summaries must use Title Case.
+    message: 'Operation summary should use Title Case (e.g. "Search Live News Articles").'
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: '^([A-Z][a-z0-9]*)( ([A-Z][a-z0-9]*|[A-Z]+|of|the|and|in|to|for|by|on|at|with|a|an))*$'
+  mediastack-tag-allowed:
+    description: Only News and Sources are valid tags.
+    message: '{{value}} is not an allowed tag for mediastack APIs.'
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete].tags[*]
+    then:
+      function: enumeration
+      functionOptions:
+        values:
+          - News
+          - Sources
+  mediastack-pagination-envelope:
+    description: List responses must wrap results in a pagination + data envelope.
+    message: '200 list response must include both `pagination` and `data` properties.'
+    severity: warn
+    given: $.paths[*][get].responses[200].content.application/json.schema
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          properties:
+            type:
+              const: object
+            properties:
+              type: object
+              required:
+                - pagination
+                - data
+  mediastack-error-shape:
+    description: Error responses must use the success/error envelope.
+    message: 'Error responses should return {success:false, error:{code,message,context}}.'
+    severity: warn
+    given: $.components.schemas.Error
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          required:
+            - properties
+          properties:
+            properties:
+              type: object
+              required:
+                - success
+                - error
+  mediastack-snake-case-fields:
+    description: Schema property names use snake_case (e.g. published_at, access_key).
+    message: '{{property}} should be snake_case.'
+    severity: warn
+    given: $.components.schemas[*].properties[*]~
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-z0-9_]*$'

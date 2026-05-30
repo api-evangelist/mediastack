@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-structure.org/structure/v1",
+  "$id": "https://github.com/api-evangelist/mediastack/json-structure/mediastack-news-article-structure.json",
+  "title": "NewsArticleStructure",
+  "description": "JSON Structure declaration for the Mediastack NewsArticle resource.",
+  "type": "structure",
+  "name": "NewsArticle",
+  "fields": [
+    { "name": "author", "type": "string", "nullable": true, "description": "Article byline." },
+    { "name": "title", "type": "string", "required": true, "description": "Article headline." },
+    { "name": "description", "type": "string", "nullable": true, "description": "Article summary." },
+    { "name": "url", "type": "uri", "required": true, "description": "Canonical article URL." },
+    { "name": "source", "type": "string", "required": true, "description": "Publisher display name." },
+    { "name": "image", "type": "uri", "nullable": true, "description": "Lead image URL." },
+    { "name": "category", "type": "enum", "values": ["general", "business", "entertainment", "health", "science", "sports", "technology"] },
+    { "name": "language", "type": "language-code", "description": "ISO 639-1." },
+    { "name": "country", "type": "country-code", "description": "ISO 3166-1 alpha-2." },
+    { "name": "published_at", "type": "datetime", "required": true, "description": "Publication timestamp." }
+  ]
+}

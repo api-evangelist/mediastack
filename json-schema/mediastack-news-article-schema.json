@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/mediastack/json-schema/mediastack-news-article-schema.json",
+  "title": "NewsArticle",
+  "description": "A single news article record returned by the Mediastack /v1/news endpoint.",
+  "type": "object",
+  "required": ["title", "url", "source", "published_at"],
+  "properties": {
+    "author": { "type": ["string", "null"], "description": "Author byline when present." },
+    "title": { "type": "string", "description": "Article headline." },
+    "description": { "type": ["string", "null"], "description": "Article summary or deck." },
+    "url": { "type": "string", "format": "uri", "description": "Canonical article URL." },
+    "source": { "type": "string", "description": "Display name of the publisher." },
+    "image": { "type": ["string", "null"], "format": "uri", "description": "Lead image URL." },
+    "category": {
+      "type": "string",
+      "enum": ["general", "business", "entertainment", "health", "science", "sports", "technology"]
+    },
+    "language": { "type": "string", "description": "ISO 639-1 language code." },
+    "country": { "type": "string", "description": "ISO 3166-1 alpha-2 country code." },
+    "published_at": { "type": "string", "format": "date-time", "description": "Publication timestamp in ISO 8601." }
+  },
+  "additionalProperties": false
+}

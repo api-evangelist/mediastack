@@ -1,0 +1,47 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://schema.org/",
+    "mediastack": "https://mediastack.com/vocab#",
+    "iso": "https://www.iso.org/standard/vocab#",
+    "NewsArticle": "https://schema.org/NewsArticle",
+    "Organization": "https://schema.org/Organization",
+    "WebSite": "https://schema.org/WebSite",
+    "Country": "https://schema.org/Country",
+    "Language": "https://schema.org/Language",
+
+    "title": "headline",
+    "description": "description",
+    "url": { "@id": "url", "@type": "@id" },
+    "image": { "@id": "image", "@type": "@id" },
+    "author": "author",
+    "source": {
+      "@id": "publisher",
+      "@type": "@id"
+    },
+    "category": "articleSection",
+    "language": {
+      "@id": "inLanguage",
+      "@type": "@id"
+    },
+    "country": {
+      "@id": "contentLocation",
+      "@type": "@id"
+    },
+    "published_at": {
+      "@id": "datePublished",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+
+    "id": "identifier",
+    "name": "name",
+
+    "pagination": "mediastack:pagination",
+    "limit": "mediastack:limit",
+    "offset": "mediastack:offset",
+    "count": "mediastack:count",
+    "total": "mediastack:total",
+    "data": "mediastack:data",
+    "access_key": "mediastack:accessKey"
+  }
+}

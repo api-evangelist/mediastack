@@ -1,0 +1,97 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Mediastack
+providerId: mediastack
+created: '2026-05-30'
+modified: '2026-05-30'
+reconciled: true
+tags:
+  - Rate Limiting
+  - News
+  - Quota
+  - Apilayer
+description: >-
+  Mediastack enforces a monthly-quota model rather than a published per-second TPS limit.
+  Each subscription plan ships an included monthly request count; requests beyond that count
+  are either billed as overage (paid plans) or hard-rejected with `usage_limit_reached`
+  (Free plan). Limits are scoped per access_key. Mediastack does not publicly document a
+  per-second or per-minute throttle; bursty clients should self-throttle and use exponential
+  backoff if HTTP 429 is returned.
+sources:
+  - https://mediastack.com/documentation
+  - https://mediastack.com/product
+headers:
+  requestId: X-Request-Id
+responseCodes:
+  invalidAccessKey: 401
+  functionAccessRestricted: 403
+  quotaExceeded: 429
+  serverError: 500
+limits:
+  - name: Monthly Request Quota (Free)
+    scope: key
+    metric: requests_per_month
+    limit: 100
+    timeFrame: month
+    notes: 'Hard cap. Excess requests return success:false with error.code=usage_limit_reached.'
+  - name: Monthly Request Quota (Standard)
+    scope: key
+    metric: requests_per_month
+    limit: 10000
+    timeFrame: month
+    notes: 'Soft cap. Overage billed at $0.009996 per additional request.'
+  - name: Monthly Request Quota (Professional)
+    scope: key
+    metric: requests_per_month
+    limit: 50000
+    timeFrame: month
+    notes: 'Soft cap. Overage billed at $0.0079992 per additional request.'
+  - name: Monthly Request Quota (Business)
+    scope: key
+    metric: requests_per_month
+    limit: 250000
+    timeFrame: month
+    notes: 'Soft cap. Overage billed at $0.00399984 per additional request.'
+  - name: Monthly Request Quota (Enterprise)
+    scope: key
+    metric: requests_per_month
+    limit: 'custom — contact sales'
+    notes: 'Negotiated volume; SLA-backed.'
+  - name: Page Size
+    scope: request
+    metric: items_per_response
+    limit: 100
+    timeFrame: request
+    notes: 'Maximum `limit` query parameter value on /news and /sources.'
+  - name: HTTPS Access
+    scope: key
+    metric: feature_gate
+    limit: 'paid-plans-only'
+    notes: 'HTTPS endpoints (https://api.mediastack.com) require Standard plan or above. Free plan is HTTP only.'
+  - name: Historical Date Access
+    scope: key
+    metric: feature_gate
+    limit: 'paid-plans-only'
+    notes: 'The `date` query parameter on /v1/news is gated to Standard plan and above.'
+policies:
+  - name: Quota Scoping
+    description: All quotas are per access_key. Multiple keys on one account each get their own monthly quota.
+  - name: Soft vs Hard Quotas
+    description: >-
+      Free-plan quota is hard (request rejected). All paid plans are soft (request succeeds
+      and overage is added to the next invoice line). Disable overage in the dashboard if hard
+      caps are required.
+  - name: 429 Retry
+    description: >-
+      On HTTP 429, back off and retry. Mediastack does not publish a Retry-After header;
+      apply exponential backoff (e.g. 1s, 2s, 4s, 8s, 16s) and surface usage_limit_reached
+      errors to operators.
+  - name: Plan Upgrades
+    description: >-
+      Plan upgrades take effect immediately and reset the monthly counter only at the next
+      billing anniversary; quota is prorated across the period.
+  - name: Self-Throttling
+    description: >-
+      Because per-second limits are unpublished, high-volume clients should pace requests to
+      stay within their daily share of the monthly quota (e.g. Business plan ≈ 8.3k/day).

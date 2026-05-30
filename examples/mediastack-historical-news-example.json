@@ -1,0 +1,29 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.mediastack.com/v1/news?access_key=YOUR_ACCESS_KEY&date=2026-05-01,2026-05-15&countries=us&keywords=election&limit=1"
+  },
+  "response": {
+    "pagination": {
+      "limit": 1,
+      "offset": 0,
+      "count": 1,
+      "total": 312
+    },
+    "data": [
+      {
+        "author": "Reuters Staff",
+        "title": "State Officials Certify Primary Election Results",
+        "description": "Certification proceeded on schedule across battleground counties.",
+        "url": "https://example.com/election-results",
+        "source": "Reuters",
+        "image": "https://example.com/img/election.jpg",
+        "category": "general",
+        "language": "en",
+        "country": "us",
+        "published_at": "2026-05-15T22:14:00+00:00"
+      }
+    ]
+  },
+  "notes": "The `date` parameter is only available on Standard plans and above. Free-plan requests with `date` will receive HTTP 403 with `function_access_restricted`."
+}

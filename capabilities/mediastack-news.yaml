@@ -1,0 +1,145 @@
+naftiko: "1.0.0-alpha2"
+
+info:
+  label: "Mediastack News API — News"
+  description: >-
+    News — search live and historical news articles. 1 operation. Lead operation:
+    Search Live News Articles. Self-contained Naftiko capability covering one Mediastack
+    business surface.
+  tags:
+    - Mediastack
+    - News
+    - Aggregation
+  created: "2026-05-30"
+  modified: "2026-05-30"
+
+binds:
+  - namespace: env
+    keys:
+      MEDIASTACK_ACCESS_KEY: MEDIASTACK_ACCESS_KEY
+
+capability:
+
+  consumes:
+    - type: http
+      namespace: "mediastack-news"
+      baseUri: "https://api.mediastack.com/v1"
+      description: "Mediastack News API — News business capability. Self-contained, no shared references."
+      authentication:
+        type: apikey
+        key: access_key
+        value: "{{env.MEDIASTACK_ACCESS_KEY}}"
+        placement: query
+      resources:
+        - name: "news"
+          path: "/news"
+          operations:
+            - name: "searchNews"
+              method: GET
+              description: "Search live and historical news articles by source, category, country, language, keywords, and date."
+              inputParameters:
+                - name: "sources"
+                  in: query
+                  type: string
+                  required: false
+                  description: "Comma-separated source IDs to include/exclude."
+                - name: "categories"
+                  in: query
+                  type: string
+                  required: false
+                  description: "Comma-separated categories to include/exclude."
+                - name: "countries"
+                  in: query
+                  type: string
+                  required: false
+                  description: "Comma-separated ISO 3166-1 alpha-2 country codes."
+                - name: "languages"
+                  in: query
+                  type: string
+                  required: false
+                  description: "Comma-separated ISO 639-1 language codes."
+                - name: "keywords"
+                  in: query
+                  type: string
+                  required: false
+                  description: "Free-text keyword search."
+                - name: "date"
+                  in: query
+                  type: string
+                  required: false
+                  description: "Single date or date range (paid plans only)."
+                - name: "sort"
+                  in: query
+                  type: string
+                  required: false
+                  description: "Sort order: published_desc | published_asc | popularity."
+                - name: "limit"
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Page size, 1-100."
+                - name: "offset"
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Pagination offset."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      namespace: "mediastack-news-rest"
+      port: 8080
+      description: "REST adapter for Mediastack News API — News. One Spectral-compliant resource per consumed operation, prefixed with /v1."
+      resources:
+        - path: "/v1/news"
+          name: "news"
+          description: "REST surface for news article search."
+          operations:
+            - method: GET
+              name: "searchNews"
+              description: "Search live and historical news articles."
+              call: "mediastack-news.searchNews"
+              with:
+                sources: "rest.sources"
+                categories: "rest.categories"
+                countries: "rest.countries"
+                languages: "rest.languages"
+                keywords: "rest.keywords"
+                date: "rest.date"
+                sort: "rest.sort"
+                limit: "rest.limit"
+                offset: "rest.offset"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      namespace: "mediastack-news-mcp"
+      port: 9090
+      transport: http
+      description: "MCP adapter for Mediastack News API — News. One tool per consumed operation, routed inline through this capability's consumes block."
+      tools:
+        - name: "search-news"
+          description: "Search live and historical news articles."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: "mediastack-news.searchNews"
+          with:
+            sources: "tools.sources"
+            categories: "tools.categories"
+            countries: "tools.countries"
+            languages: "tools.languages"
+            keywords: "tools.keywords"
+            date: "tools.date"
+            sort: "tools.sort"
+            limit: "tools.limit"
+            offset: "tools.offset"
+          outputParameters:
+            - type: object
+              mapping: "$."

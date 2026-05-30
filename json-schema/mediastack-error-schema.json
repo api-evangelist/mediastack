@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/mediastack/json-schema/mediastack-error-schema.json",
+  "title": "Error",
+  "description": "Mediastack API error envelope.",
+  "type": "object",
+  "required": ["success", "error"],
+  "properties": {
+    "success": { "type": "boolean", "const": false },
+    "error": {
+      "type": "object",
+      "required": ["code", "message"],
+      "properties": {
+        "code": { "type": "string", "description": "Machine-readable error code (e.g. invalid_access_key, function_access_restricted, usage_limit_reached)." },
+        "message": { "type": "string", "description": "Human-readable error message." },
+        "context": { "type": ["object", "null"], "additionalProperties": true }
+      }
+    }
+  }
+}

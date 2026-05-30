@@ -1,0 +1,32 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.mediastack.com/v1/sources?access_key=YOUR_ACCESS_KEY&countries=us&languages=en&categories=technology&limit=2"
+  },
+  "response": {
+    "pagination": {
+      "limit": 2,
+      "offset": 0,
+      "count": 2,
+      "total": 87
+    },
+    "data": [
+      {
+        "id": "the-verge",
+        "name": "The Verge",
+        "category": "technology",
+        "country": "us",
+        "language": "en",
+        "url": "https://www.theverge.com"
+      },
+      {
+        "id": "techcrunch",
+        "name": "TechCrunch",
+        "category": "technology",
+        "country": "us",
+        "language": "en",
+        "url": "https://techcrunch.com"
+      }
+    ]
+  }
+}

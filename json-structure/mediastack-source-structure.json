@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/structure/v1",
+  "$id": "https://github.com/api-evangelist/mediastack/json-structure/mediastack-source-structure.json",
+  "title": "SourceStructure",
+  "description": "JSON Structure declaration for the Mediastack Source resource.",
+  "type": "structure",
+  "name": "Source",
+  "fields": [
+    { "name": "id", "type": "string", "required": true, "description": "Stable source identifier." },
+    { "name": "name", "type": "string", "required": true, "description": "Publisher display name." },
+    { "name": "category", "type": "enum", "values": ["general", "business", "entertainment", "health", "science", "sports", "technology"] },
+    { "name": "country", "type": "country-code", "description": "ISO 3166-1 alpha-2." },
+    { "name": "language", "type": "language-code", "description": "ISO 639-1." },
+    { "name": "url", "type": "uri", "description": "Publisher homepage." }
+  ]
+}
