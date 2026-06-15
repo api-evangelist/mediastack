@@ -1,0 +1,836 @@
+{
+  "item": [
+    {
+      "id": "8174cf92-b852-405c-982d-d0c1120a9afa",
+      "name": "News",
+      "description": {
+        "content": "Live and historical news articles from global publishers.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7e09eb9a-de3a-419e-bb3b-13b99ba2e4d4",
+          "name": "Search Live News Articles",
+          "request": {
+            "name": "Search Live News Articles",
+            "description": {
+              "content": "Retrieve live, real-time news articles aggregated from thousands of publishers worldwide.\nFilter by source, category, country, language, keywords, and date. Supports pagination\nthrough limit/offset. The `date` parameter enables historical lookups on paid plans.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "news"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "access_key",
+                  "value": "<string>",
+                  "description": "(Required) Mediastack API access key."
+                },
+                {
+                  "disabled": false,
+                  "key": "sources",
+                  "value": "<string>",
+                  "description": "Comma-separated list of source identifiers to include or exclude (prefix with `-` to exclude)."
+                },
+                {
+                  "disabled": false,
+                  "key": "categories",
+                  "value": "<string>",
+                  "description": "Comma-separated list of categories to include or exclude (prefix with `-` to exclude)."
+                },
+                {
+                  "disabled": false,
+                  "key": "countries",
+                  "value": "<string>",
+                  "description": "Comma-separated list of ISO 3166-1 alpha-2 country codes to include or exclude."
+                },
+                {
+                  "disabled": false,
+                  "key": "languages",
+                  "value": "<string>",
+                  "description": "Comma-separated list of ISO 639-1 language codes to include or exclude."
+                },
+                {
+                  "disabled": false,
+                  "key": "keywords",
+                  "value": "<string>",
+                  "description": "Free-text keywords to search across article title, description, and body."
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<string>",
+                  "description": "Filter by publication date or date range (paid plans only).\nSingle date `YYYY-MM-DD` or range `YYYY-MM-DD,YYYY-MM-DD`.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "published_desc",
+                  "description": "Sort order for results."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Number of results per page (max 100)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Pagination offset."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2b3d9f58-5408-49d0-9a8f-b80b2d8cd025",
+              "name": "Paginated list of news articles.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sources",
+                      "value": "cnn,bbc,-techcrunch"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countries",
+                      "value": "us,gb,de"
+                    },
+                    {
+                      "key": "languages",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "keywords",
+                      "value": "climate change"
+                    },
+                    {
+                      "key": "date",
+                      "value": "2026-05-01,2026-05-28"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "published_desc"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pagination\": {\n    \"limit\": 25,\n    \"offset\": 0,\n    \"count\": 25,\n    \"total\": 10342\n  },\n  \"data\": [\n    {\n      \"author\": \"Jane Doe\",\n      \"title\": \"Global Markets Rally on Easing Inflation Data\",\n      \"description\": \"Equities advanced after inflation data came in softer than expected.\",\n      \"url\": \"https://example.com/markets-rally\",\n      \"source\": \"CNN\",\n      \"image\": \"https://example.com/img/markets.jpg\",\n      \"category\": \"business\",\n      \"language\": \"en\",\n      \"country\": \"us\",\n      \"published_at\": \"2026-05-28T14:32:00+00:00\"\n    },\n    {\n      \"author\": \"Jane Doe\",\n      \"title\": \"Global Markets Rally on Easing Inflation Data\",\n      \"description\": \"Equities advanced after inflation data came in softer than expected.\",\n      \"url\": \"https://example.com/markets-rally\",\n      \"source\": \"CNN\",\n      \"image\": \"https://example.com/img/markets.jpg\",\n      \"category\": \"business\",\n      \"language\": \"en\",\n      \"country\": \"us\",\n      \"published_at\": \"2026-05-28T14:32:00+00:00\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f84a0769-d68c-4b47-a28a-3a20ffa00a3e",
+              "name": "Missing or invalid API access key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sources",
+                      "value": "cnn,bbc,-techcrunch"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countries",
+                      "value": "us,gb,de"
+                    },
+                    {
+                      "key": "languages",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "keywords",
+                      "value": "climate change"
+                    },
+                    {
+                      "key": "date",
+                      "value": "2026-05-01,2026-05-28"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "published_desc"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": {\n    \"code\": \"invalid_access_key\",\n    \"message\": \"You have not supplied a valid API Access Key.\",\n    \"context\": {\n      \"key_0\": 1088.276420958214,\n      \"key_1\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "442d423d-4847-4d27-b8f7-33dcce21b9af",
+              "name": "Function not allowed on current plan (e.g. historical data on Free).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sources",
+                      "value": "cnn,bbc,-techcrunch"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countries",
+                      "value": "us,gb,de"
+                    },
+                    {
+                      "key": "languages",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "keywords",
+                      "value": "climate change"
+                    },
+                    {
+                      "key": "date",
+                      "value": "2026-05-01,2026-05-28"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "published_desc"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": {\n    \"code\": \"invalid_access_key\",\n    \"message\": \"You have not supplied a valid API Access Key.\",\n    \"context\": {\n      \"key_0\": 1088.276420958214,\n      \"key_1\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "630fffdb-fdca-44d4-b0a5-08d9fed334a2",
+              "name": "Monthly request quota exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sources",
+                      "value": "cnn,bbc,-techcrunch"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countries",
+                      "value": "us,gb,de"
+                    },
+                    {
+                      "key": "languages",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "keywords",
+                      "value": "climate change"
+                    },
+                    {
+                      "key": "date",
+                      "value": "2026-05-01,2026-05-28"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "published_desc"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": {\n    \"code\": \"invalid_access_key\",\n    \"message\": \"You have not supplied a valid API Access Key.\",\n    \"context\": {\n      \"key_0\": 1088.276420958214,\n      \"key_1\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "070b226d-7296-4d59-8379-a54c8e1287b7",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sources",
+                      "value": "cnn,bbc,-techcrunch"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countries",
+                      "value": "us,gb,de"
+                    },
+                    {
+                      "key": "languages",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "keywords",
+                      "value": "climate change"
+                    },
+                    {
+                      "key": "date",
+                      "value": "2026-05-01,2026-05-28"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "published_desc"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": {\n    \"code\": \"invalid_access_key\",\n    \"message\": \"You have not supplied a valid API Access Key.\",\n    \"context\": {\n      \"key_0\": 1088.276420958214,\n      \"key_1\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d952786b-7af5-4b6b-beff-c8c57443b17c",
+      "name": "Sources",
+      "description": {
+        "content": "Discovery of supported news sources, publishers, and blogs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "22aee964-245a-45d7-8de4-8d6d47a0b7c5",
+          "name": "List News Sources",
+          "request": {
+            "name": "List News Sources",
+            "description": {
+              "content": "Retrieve the catalog of news sources, publishers, and blogs indexed by mediastack.\nFilter by search keyword, country, language, or category to narrow the catalog.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "access_key",
+                  "value": "<string>",
+                  "description": "(Required) Mediastack API access key."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Free-text search across source name and URL."
+                },
+                {
+                  "disabled": false,
+                  "key": "countries",
+                  "value": "<string>",
+                  "description": "Comma-separated list of ISO 3166-1 alpha-2 country codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "languages",
+                  "value": "<string>",
+                  "description": "Comma-separated list of ISO 639-1 language codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "categories",
+                  "value": "<string>",
+                  "description": "Comma-separated list of categories."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "537908df-4187-4b25-ab34-f3dc2b847381",
+              "name": "Paginated list of news sources.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countries",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "languages",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pagination\": {\n    \"limit\": 25,\n    \"offset\": 0,\n    \"count\": 25,\n    \"total\": 10342\n  },\n  \"data\": [\n    {\n      \"id\": \"cnn\",\n      \"name\": \"CNN\",\n      \"category\": \"general\",\n      \"country\": \"us\",\n      \"language\": \"en\",\n      \"url\": \"https://www.cnn.com\"\n    },\n    {\n      \"id\": \"cnn\",\n      \"name\": \"CNN\",\n      \"category\": \"general\",\n      \"country\": \"us\",\n      \"language\": \"en\",\n      \"url\": \"https://www.cnn.com\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6eb8375-1965-4818-9873-8623a51f989d",
+              "name": "Missing or invalid API access key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countries",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "languages",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": {\n    \"code\": \"invalid_access_key\",\n    \"message\": \"You have not supplied a valid API Access Key.\",\n    \"context\": {\n      \"key_0\": 1088.276420958214,\n      \"key_1\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93d97104-4745-4568-ba11-6114fb6fb641",
+              "name": "Monthly request quota exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countries",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "languages",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": {\n    \"code\": \"invalid_access_key\",\n    \"message\": \"You have not supplied a valid API Access Key.\",\n    \"context\": {\n      \"key_0\": 1088.276420958214,\n      \"key_1\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mediastack.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "access_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a2e9c2e7-7891-4c58-97eb-dbf7faf7903e",
+    "name": "Mediastack News API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Mediastack is a free, simple REST API for live, historical, and blog news articles\naggregated from over 7,500 news sources across more than 50 countries and 13 languages.\nOperated by apilayer, mediastack exposes JSON endpoints for news search, news source\ndiscovery, and date-bounded historical news retrieval.\n\n\nContact Support:\n Name: Mediastack Support",
+      "type": "text/plain"
+    }
+  }
+}

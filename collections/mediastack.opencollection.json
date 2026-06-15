@@ -1,0 +1,160 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mediastack News API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "access_key",
+      "value": "{{access_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "News",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Live News Articles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mediastack.com/v1/news",
+            "params": [
+              {
+                "name": "access_key",
+                "value": "",
+                "type": "query",
+                "description": "Mediastack API access key."
+              },
+              {
+                "name": "sources",
+                "value": "cnn,bbc,-techcrunch",
+                "type": "query",
+                "description": "Comma-separated list of source identifiers to include or exclude (prefix with `-` to exclude)."
+              },
+              {
+                "name": "categories",
+                "value": "business,technology",
+                "type": "query",
+                "description": "Comma-separated list of categories to include or exclude (prefix with `-` to exclude)."
+              },
+              {
+                "name": "countries",
+                "value": "us,gb,de",
+                "type": "query",
+                "description": "Comma-separated list of ISO 3166-1 alpha-2 country codes to include or exclude."
+              },
+              {
+                "name": "languages",
+                "value": "en,de",
+                "type": "query",
+                "description": "Comma-separated list of ISO 639-1 language codes to include or exclude."
+              },
+              {
+                "name": "keywords",
+                "value": "climate change",
+                "type": "query",
+                "description": "Free-text keywords to search across article title, description, and body."
+              },
+              {
+                "name": "date",
+                "value": "2026-05-01,2026-05-28",
+                "type": "query",
+                "description": "Filter by publication date or date range (paid plans only).\nSingle date `YYYY-MM-DD` or range `YYYY-MM-DD,YYYY-MM-DD`.\n"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort order for results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page (max 100)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset."
+              }
+            ]
+          },
+          "docs": "Retrieve live, real-time news articles aggregated from thousands of publishers worldwide.\nFilter by source, category, country, language, keywords, and date. Supports pagination\nthrough limit/offset. The `date` parameter enables historical lookups on paid plans.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sources",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List News Sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mediastack.com/v1/sources",
+            "params": [
+              {
+                "name": "access_key",
+                "value": "",
+                "type": "query",
+                "description": "Mediastack API access key."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Free-text search across source name and URL."
+              },
+              {
+                "name": "countries",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of ISO 3166-1 alpha-2 country codes."
+              },
+              {
+                "name": "languages",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of ISO 639-1 language codes."
+              },
+              {
+                "name": "categories",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of categories."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve the catalog of news sources, publishers, and blogs indexed by mediastack.\nFilter by search keyword, country, language, or category to narrow the catalog.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

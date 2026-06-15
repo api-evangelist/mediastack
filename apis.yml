@@ -1,11 +1,10 @@
 aid: mediastack
 name: Mediastack
 description: >-
-  Mediastack is a free and paid REST API by apilayer for live, historical, and blog news
-  articles aggregated from more than 7,500 publishers across 50+ countries and 13
-  languages. It exposes a /v1/news endpoint for keyword-, source-, country-, language-,
-  category-, and date-filtered search, and a /v1/sources endpoint for browsing the
-  underlying publisher catalog.
+  Mediastack is a free and paid REST API by apilayer for live, historical, and blog news articles aggregated from more
+  than 7,500 publishers across 50+ countries and 13 languages. It exposes a /v1/news endpoint for keyword-, source-,
+  country-, language-, category-, and date-filtered search, and a /v1/sources endpoint for browsing the underlying
+  publisher catalog.
 url: https://mediastack.com
 humanURL: https://mediastack.com
 baseURL: https://api.mediastack.com/v1
@@ -26,8 +25,8 @@ tags:
 apis:
   - name: Mediastack News API
     description: >-
-      Live, historical, and blog news search plus publisher source discovery. Returns
-      JSON with a pagination + data envelope, secured by an access_key query parameter.
+      Live, historical, and blog news search plus publisher source discovery. Returns JSON with a pagination + data
+      envelope, secured by an access_key query parameter.
     humanURL: https://mediastack.com/documentation
     baseURL: https://api.mediastack.com/v1
     tags:
@@ -71,12 +70,6 @@ apis:
       - type: Example
         url: examples/mediastack-historical-news-example.json
         title: Historical News Example
-      - type: NaftikoCapability
-        url: capabilities/mediastack-news.yaml
-        title: News Capability
-      - type: NaftikoCapability
-        url: capabilities/mediastack-sources.yaml
-        title: Sources Capability
 common:
   - type: Website
     url: https://mediastack.com
@@ -149,7 +142,9 @@ common:
   - type: Integrations
     data:
       - name: apilayer Marketplace
-        description: Mediastack is one of several APIs in the apilayer marketplace alongside marketstack, currencylayer, weatherstack, and ipapi.
+        description: >-
+          Mediastack is one of several APIs in the apilayer marketplace alongside marketstack, currencylayer,
+          weatherstack, and ipapi.
       - name: REST + JSON
         description: Standard HTTPS+JSON makes it trivial to integrate with any HTTP client library.
       - name: Postman / Insomnia
