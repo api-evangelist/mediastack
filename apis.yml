@@ -37,7 +37,7 @@ apis:
         url: https://docs.apilayer.com/mediastack/docs/api-documentation
       - type: APIReference
         url: https://mediastack.com/documentation
-      - type: Quickstart
+      - type: GettingStarted
         url: https://mediastack.com/documentation#quickstart
       - type: Authentication
         url: https://mediastack.com/documentation#authentication
@@ -61,13 +61,13 @@ apis:
       - type: JSONStructure
         url: json-structure/mediastack-source-structure.json
         title: Source Structure
-      - type: Example
+      - type: Examples
         url: examples/mediastack-search-news-example.json
         title: Search News Example
-      - type: Example
+      - type: Examples
         url: examples/mediastack-list-sources-example.json
         title: List Sources Example
-      - type: Example
+      - type: Examples
         url: examples/mediastack-historical-news-example.json
         title: Historical News Example
 common:
@@ -75,7 +75,7 @@ common:
     url: https://mediastack.com
   - type: Portal
     url: https://mediastack.com/dashboard
-  - type: SignUp
+  - type: Signup
     url: https://mediastack.com/signup/free
   - type: Pricing
     url: https://mediastack.com/product
@@ -91,7 +91,7 @@ common:
     url: https://github.com/apilayer/mediastack
   - type: PublicAPIsListing
     url: https://github.com/public-apis/public-apis
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/mediastack-context.jsonld
   - type: SpectralRules
     url: rules/mediastack-rules.yml
