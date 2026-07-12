@@ -1,0 +1,18 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/mediastack-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: query
+  parameter: access_key
+  description: |-
+    Mediastack uses a single static API access key passed as a query parameter
+    (`access_key=YOUR_KEY`). Keys are issued from the mediastack dashboard.
+  sources:
+  - openapi/mediastack-openapi.yml

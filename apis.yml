@@ -71,6 +71,10 @@ apis:
         url: examples/mediastack-historical-news-example.json
         title: Historical News Example
 common:
+  - type: DomainSecurity
+    url: security/mediastack-domain-security.yml
+  - type: Authentication
+    url: authentication/mediastack-authentication.yml
   - type: Website
     url: https://mediastack.com
   - type: Portal
