@@ -71,6 +71,8 @@ apis:
         url: examples/mediastack-historical-news-example.json
         title: Historical News Example
 common:
+  - type: AgenticAccess
+    url: agentic-access/mediastack-agentic-access.yml
   - type: DomainSecurity
     url: security/mediastack-domain-security.yml
   - type: Authentication
