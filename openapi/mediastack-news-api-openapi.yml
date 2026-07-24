@@ -1,0 +1,303 @@
+openapi: 3.0.3
+info:
+  title: Mediastack News API
+  description: 'Mediastack is a free, simple REST API for live, historical, and blog news articles
+
+    aggregated from over 7,500 news sources across more than 50 countries and 13 languages.
+
+    Operated by apilayer, mediastack exposes JSON endpoints for news search, news source
+
+    discovery, and date-bounded historical news retrieval.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Mediastack Support
+    url: https://mediastack.com/contact
+  license:
+    name: Proprietary
+    url: https://mediastack.com/terms
+  x-api-name: mediastack
+  x-provider: apilayer
+servers:
+- url: https://api.mediastack.com/v1
+  description: Production HTTP base URL (Free plan and above)
+- url: https://api.mediastack.com/v1
+  description: Production HTTPS base URL (Standard plan and above)
+security:
+- ApiKeyAuth: []
+tags:
+- name: News
+  description: Live and historical news articles from global publishers.
+paths:
+  /news:
+    get:
+      tags:
+      - News
+      summary: Search Live News Articles
+      description: 'Retrieve live, real-time news articles aggregated from thousands of publishers worldwide.
+
+        Filter by source, category, country, language, keywords, and date. Supports pagination
+
+        through limit/offset. The `date` parameter enables historical lookups on paid plans.
+
+        '
+      operationId: searchNews
+      parameters:
+      - $ref: '#/components/parameters/AccessKey'
+      - name: sources
+        in: query
+        description: Comma-separated list of source identifiers to include or exclude (prefix with `-` to exclude).
+        required: false
+        schema:
+          type: string
+        example: cnn,bbc,-techcrunch
+      - name: categories
+        in: query
+        description: Comma-separated list of categories to include or exclude (prefix with `-` to exclude).
+        required: false
+        schema:
+          type: string
+          enum:
+          - general
+          - business
+          - entertainment
+          - health
+          - science
+          - sports
+          - technology
+        example: business,technology
+      - name: countries
+        in: query
+        description: Comma-separated list of ISO 3166-1 alpha-2 country codes to include or exclude.
+        required: false
+        schema:
+          type: string
+        example: us,gb,de
+      - name: languages
+        in: query
+        description: Comma-separated list of ISO 639-1 language codes to include or exclude.
+        required: false
+        schema:
+          type: string
+          enum:
+          - ar
+          - de
+          - en
+          - es
+          - fr
+          - he
+          - it
+          - nl
+          - 'no'
+          - pt
+          - ru
+          - se
+          - zh
+        example: en,de
+      - name: keywords
+        in: query
+        description: Free-text keywords to search across article title, description, and body.
+        required: false
+        schema:
+          type: string
+        example: climate change
+      - name: date
+        in: query
+        description: 'Filter by publication date or date range (paid plans only).
+
+          Single date `YYYY-MM-DD` or range `YYYY-MM-DD,YYYY-MM-DD`.
+
+          '
+        required: false
+        schema:
+          type: string
+          pattern: ^\d{4}-\d{2}-\d{2}(,\d{4}-\d{2}-\d{2})?$
+        example: 2026-05-01,2026-05-28
+      - name: sort
+        in: query
+        description: Sort order for results.
+        required: false
+        schema:
+          type: string
+          enum:
+          - published_desc
+          - published_asc
+          - popularity
+          default: published_desc
+      - name: limit
+        in: query
+        description: Number of results per page (max 100).
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 25
+      - name: offset
+        in: query
+        description: Pagination offset.
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      responses:
+        '200':
+          description: Paginated list of news articles.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/ServerError'
+components:
+  responses:
+    RateLimited:
+      description: Monthly request quota exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid API access key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Function not allowed on current plan (e.g. historical data on Free).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    NewsResponse:
+      type: object
+      required:
+      - pagination
+      - data
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/NewsArticle'
+    NewsArticle:
+      type: object
+      properties:
+        author:
+          type: string
+          nullable: true
+          description: Article byline / author when available.
+          example: Jane Doe
+        title:
+          type: string
+          example: Global Markets Rally on Easing Inflation Data
+        description:
+          type: string
+          nullable: true
+          example: Equities advanced after inflation data came in softer than expected.
+        url:
+          type: string
+          format: uri
+          example: https://example.com/markets-rally
+        source:
+          type: string
+          description: Display name of the publisher.
+          example: CNN
+        image:
+          type: string
+          format: uri
+          nullable: true
+          example: https://example.com/img/markets.jpg
+        category:
+          type: string
+          enum:
+          - general
+          - business
+          - entertainment
+          - health
+          - science
+          - sports
+          - technology
+          example: business
+        language:
+          type: string
+          description: ISO 639-1 language code.
+          example: en
+        country:
+          type: string
+          description: ISO 3166-1 alpha-2 country code.
+          example: us
+        published_at:
+          type: string
+          format: date-time
+          example: '2026-05-28T14:32:00+00:00'
+    Pagination:
+      type: object
+      properties:
+        limit:
+          type: integer
+          example: 25
+        offset:
+          type: integer
+          example: 0
+        count:
+          type: integer
+          description: Number of records returned in the current page.
+          example: 25
+        total:
+          type: integer
+          description: Total records matching the query.
+          example: 10342
+    Error:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              example: invalid_access_key
+            message:
+              type: string
+              example: You have not supplied a valid API Access Key.
+            context:
+              type: object
+              additionalProperties: true
+              nullable: true
+  parameters:
+    AccessKey:
+      name: access_key
+      in: query
+      required: true
+      description: Mediastack API access key.
+      schema:
+        type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: access_key
+      description: 'Mediastack uses a single static API access key passed as a query parameter
+
+        (`access_key=YOUR_KEY`). Keys are issued from the mediastack dashboard.
+
+        '

@@ -1,0 +1,199 @@
+openapi: 3.0.3
+info:
+  title: Mediastack News Sources API
+  description: 'Mediastack is a free, simple REST API for live, historical, and blog news articles
+
+    aggregated from over 7,500 news sources across more than 50 countries and 13 languages.
+
+    Operated by apilayer, mediastack exposes JSON endpoints for news search, news source
+
+    discovery, and date-bounded historical news retrieval.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Mediastack Support
+    url: https://mediastack.com/contact
+  license:
+    name: Proprietary
+    url: https://mediastack.com/terms
+  x-api-name: mediastack
+  x-provider: apilayer
+servers:
+- url: https://api.mediastack.com/v1
+  description: Production HTTP base URL (Free plan and above)
+- url: https://api.mediastack.com/v1
+  description: Production HTTPS base URL (Standard plan and above)
+security:
+- ApiKeyAuth: []
+tags:
+- name: Sources
+  description: Discovery of supported news sources, publishers, and blogs.
+paths:
+  /sources:
+    get:
+      tags:
+      - Sources
+      summary: List News Sources
+      description: 'Retrieve the catalog of news sources, publishers, and blogs indexed by mediastack.
+
+        Filter by search keyword, country, language, or category to narrow the catalog.
+
+        '
+      operationId: listSources
+      parameters:
+      - $ref: '#/components/parameters/AccessKey'
+      - name: search
+        in: query
+        description: Free-text search across source name and URL.
+        required: false
+        schema:
+          type: string
+      - name: countries
+        in: query
+        description: Comma-separated list of ISO 3166-1 alpha-2 country codes.
+        required: false
+        schema:
+          type: string
+      - name: languages
+        in: query
+        description: Comma-separated list of ISO 639-1 language codes.
+        required: false
+        schema:
+          type: string
+      - name: categories
+        in: query
+        description: Comma-separated list of categories.
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 25
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      responses:
+        '200':
+          description: Paginated list of news sources.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourcesResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  responses:
+    RateLimited:
+      description: Monthly request quota exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid API access key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Source:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Stable source identifier.
+          example: cnn
+        name:
+          type: string
+          example: CNN
+        category:
+          type: string
+          example: general
+        country:
+          type: string
+          example: us
+        language:
+          type: string
+          example: en
+        url:
+          type: string
+          format: uri
+          example: https://www.cnn.com
+    Pagination:
+      type: object
+      properties:
+        limit:
+          type: integer
+          example: 25
+        offset:
+          type: integer
+          example: 0
+        count:
+          type: integer
+          description: Number of records returned in the current page.
+          example: 25
+        total:
+          type: integer
+          description: Total records matching the query.
+          example: 10342
+    Error:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              example: invalid_access_key
+            message:
+              type: string
+              example: You have not supplied a valid API Access Key.
+            context:
+              type: object
+              additionalProperties: true
+              nullable: true
+    SourcesResponse:
+      type: object
+      required:
+      - pagination
+      - data
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Source'
+  parameters:
+    AccessKey:
+      name: access_key
+      in: query
+      required: true
+      description: Mediastack API access key.
+      schema:
+        type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: access_key
+      description: 'Mediastack uses a single static API access key passed as a query parameter
+
+        (`access_key=YOUR_KEY`). Keys are issued from the mediastack dashboard.
+
+        '
