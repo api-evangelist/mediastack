@@ -8,6 +8,19 @@ description: >-
 url: https://mediastack.com
 humanURL: https://mediastack.com
 baseURL: https://api.mediastack.com/v1
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://mediastack.com/site_images/mediastack_logo_dark.svg
 specificationVersion: '0.20'
 created: '2026-05-28'
@@ -23,54 +36,81 @@ tags:
   - Apilayer
   - Public APIs
 apis:
-  - name: Mediastack News API
-    description: >-
-      Live, historical, and blog news search plus publisher source discovery. Returns JSON with a pagination + data
-      envelope, secured by an access_key query parameter.
-    humanURL: https://mediastack.com/documentation
-    baseURL: https://api.mediastack.com/v1
-    tags:
-      - News
-      - Sources
-    properties:
-      - type: Documentation
-        url: https://docs.apilayer.com/mediastack/docs/api-documentation
-      - type: APIReference
-        url: https://mediastack.com/documentation
-      - type: GettingStarted
-        url: https://mediastack.com/documentation#quickstart
-      - type: Authentication
-        url: https://mediastack.com/documentation#authentication
-      - type: OpenAPI
-        url: openapi/mediastack-openapi.yml
-      - type: JSONSchema
-        url: json-schema/mediastack-news-article-schema.json
-        title: News Article Schema
-      - type: JSONSchema
-        url: json-schema/mediastack-source-schema.json
-        title: Source Schema
-      - type: JSONSchema
-        url: json-schema/mediastack-pagination-schema.json
-        title: Pagination Schema
-      - type: JSONSchema
-        url: json-schema/mediastack-error-schema.json
-        title: Error Schema
-      - type: JSONStructure
-        url: json-structure/mediastack-news-article-structure.json
-        title: News Article Structure
-      - type: JSONStructure
-        url: json-structure/mediastack-source-structure.json
-        title: Source Structure
-      - type: Examples
-        url: examples/mediastack-search-news-example.json
-        title: Search News Example
-      - type: Examples
-        url: examples/mediastack-list-sources-example.json
-        title: List Sources Example
-      - type: Examples
-        url: examples/mediastack-historical-news-example.json
-        title: Historical News Example
+- aid: mediastack:mediastack-news-api
+  name: Mediastack News API
+  description: Live and historical news articles from global publishers.
+  humanURL: https://mediastack.com/documentation
+  baseURL: https://api.mediastack.com/v1
+  tags:
+  - News
+  properties:
+  - type: OpenAPI
+    url: openapi/mediastack-news-api-openapi.yml
+  - type: Documentation
+    url: https://docs.apilayer.com/mediastack/docs/api-documentation
+  - type: APIReference
+    url: https://mediastack.com/documentation
+  - type: GettingStarted
+    url: https://mediastack.com/documentation#quickstart
+  - type: Authentication
+    url: https://mediastack.com/documentation#authentication
+  - type: JSONSchema
+    url: json-schema/mediastack-news-article-schema.json
+  - type: JSONSchema
+    url: json-schema/mediastack-source-schema.json
+  - type: JSONSchema
+    url: json-schema/mediastack-pagination-schema.json
+  - type: JSONSchema
+    url: json-schema/mediastack-error-schema.json
+  - type: JSONStructure
+    url: json-structure/mediastack-news-article-structure.json
+  - type: JSONStructure
+    url: json-structure/mediastack-source-structure.json
+  - type: Examples
+    url: examples/mediastack-search-news-example.json
+  - type: Examples
+    url: examples/mediastack-list-sources-example.json
+  - type: Examples
+    url: examples/mediastack-historical-news-example.json
+- aid: mediastack:mediastack-sources-api
+  name: Mediastack Sources API
+  description: Discovery of supported news sources, publishers, and blogs.
+  humanURL: https://mediastack.com/documentation
+  baseURL: https://api.mediastack.com/v1
+  tags:
+  - Sources
+  properties:
+  - type: OpenAPI
+    url: openapi/mediastack-sources-api-openapi.yml
+  - type: Documentation
+    url: https://docs.apilayer.com/mediastack/docs/api-documentation
+  - type: APIReference
+    url: https://mediastack.com/documentation
+  - type: GettingStarted
+    url: https://mediastack.com/documentation#quickstart
+  - type: Authentication
+    url: https://mediastack.com/documentation#authentication
+  - type: JSONSchema
+    url: json-schema/mediastack-news-article-schema.json
+  - type: JSONSchema
+    url: json-schema/mediastack-source-schema.json
+  - type: JSONSchema
+    url: json-schema/mediastack-pagination-schema.json
+  - type: JSONSchema
+    url: json-schema/mediastack-error-schema.json
+  - type: JSONStructure
+    url: json-structure/mediastack-news-article-structure.json
+  - type: JSONStructure
+    url: json-structure/mediastack-source-structure.json
+  - type: Examples
+    url: examples/mediastack-search-news-example.json
+  - type: Examples
+    url: examples/mediastack-list-sources-example.json
+  - type: Examples
+    url: examples/mediastack-historical-news-example.json
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/mediastack/overview
   - type: AgenticAccess
     url: agentic-access/mediastack-agentic-access.yml
   - type: DomainSecurity
