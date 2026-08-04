@@ -1,0 +1,577 @@
+{
+  "info": {
+    "_postman_id": "dfd4d30e-0bc7-402d-bb7e-cff44394cdbd",
+    "name": "Mediastack News API",
+    "description": "Mediastack is a free, simple REST API for live, historical, and blog news articles\naggregated from over 7,500 news sources across more than 50 countries and 13 languages.\nOperated by apilayer, mediastack exposes JSON endpoints for news search, news source\ndiscovery, and date-bounded historical news retrieval.\n\n\nContact Support:\n Name: Mediastack Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:09:02.000Z",
+    "updatedAt": "2026-07-28T02:09:03.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-dfd4d30e-0bc7-402d-bb7e-cff44394cdbd"
+  },
+  "item": [
+    {
+      "name": "news",
+      "item": [
+        {
+          "name": "Search Live News Articles",
+          "id": "2f092365-605c-427c-819f-6ef096a798fa",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/news?access_key=<string>&sources=<string>&categories=sports&countries=<string>&languages=pt&keywords=<string>&date=3258-76-70,2980-19-54&sort=published_desc&limit=25&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "news"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Mediastack API access key.",
+                  "key": "access_key",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of source identifiers to include or exclude (prefix with `-` to exclude).",
+                  "key": "sources",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of categories to include or exclude (prefix with `-` to exclude).",
+                  "key": "categories",
+                  "value": "sports"
+                },
+                {
+                  "description": "Comma-separated list of ISO 3166-1 alpha-2 country codes to include or exclude.",
+                  "key": "countries",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of ISO 639-1 language codes to include or exclude.",
+                  "key": "languages",
+                  "value": "pt"
+                },
+                {
+                  "description": "Free-text keywords to search across article title, description, and body.",
+                  "key": "keywords",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by publication date or date range (paid plans only).\nSingle date `YYYY-MM-DD` or range `YYYY-MM-DD,YYYY-MM-DD`.\n",
+                  "key": "date",
+                  "value": "3258-76-70,2980-19-54"
+                },
+                {
+                  "description": "Sort order for results.",
+                  "key": "sort",
+                  "value": "published_desc"
+                },
+                {
+                  "description": "Number of results per page (max 100).",
+                  "key": "limit",
+                  "value": "25"
+                },
+                {
+                  "description": "Pagination offset.",
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Retrieve live, real-time news articles aggregated from thousands of publishers worldwide.\nFilter by source, category, country, language, keywords, and date. Supports pagination\nthrough limit/offset. The `date` parameter enables historical lookups on paid plans.\n"
+          },
+          "response": [
+            {
+              "id": "8a0ac9bb-59a6-420c-8bb4-db2161d12bba",
+              "name": "Paginated list of news articles.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/news?access_key=<API Key>&sources=<string>&categories=sports&countries=<string>&languages=pt&keywords=<string>&date=3258-76-70,2980-19-54&sort=published_desc&limit=25&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "news"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Mediastack API access key.",
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "Comma-separated list of source identifiers to include or exclude (prefix with `-` to exclude).",
+                      "key": "sources",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of categories to include or exclude (prefix with `-` to exclude).",
+                      "key": "categories",
+                      "value": "sports"
+                    },
+                    {
+                      "description": "Comma-separated list of ISO 3166-1 alpha-2 country codes to include or exclude.",
+                      "key": "countries",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of ISO 639-1 language codes to include or exclude.",
+                      "key": "languages",
+                      "value": "pt"
+                    },
+                    {
+                      "description": "Free-text keywords to search across article title, description, and body.",
+                      "key": "keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by publication date or date range (paid plans only).\nSingle date `YYYY-MM-DD` or range `YYYY-MM-DD,YYYY-MM-DD`.\n",
+                      "key": "date",
+                      "value": "3258-76-70,2980-19-54"
+                    },
+                    {
+                      "description": "Sort order for results.",
+                      "key": "sort",
+                      "value": "published_desc"
+                    },
+                    {
+                      "description": "Number of results per page (max 100).",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Pagination offset.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"pagination\": {\n    \"limit\": \"<integer>\",\n    \"offset\": \"<integer>\",\n    \"count\": \"<integer>\",\n    \"total\": \"<integer>\"\n  },\n  \"data\": [\n    {\n      \"author\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"source\": \"<string>\",\n      \"image\": \"<uri>\",\n      \"category\": \"entertainment\",\n      \"language\": \"<string>\",\n      \"country\": \"<string>\",\n      \"published_at\": \"<dateTime>\"\n    },\n    {\n      \"author\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"source\": \"<string>\",\n      \"image\": \"<uri>\",\n      \"category\": \"entertainment\",\n      \"language\": \"<string>\",\n      \"country\": \"<string>\",\n      \"published_at\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:09:03.000Z",
+              "updatedAt": "2026-07-28T02:09:03.000Z",
+              "uid": "35240-8a0ac9bb-59a6-420c-8bb4-db2161d12bba"
+            },
+            {
+              "id": "04d31730-7520-4e7d-bcb7-4a9ace6b6ba9",
+              "name": "Missing or invalid API access key.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/news?access_key=<API Key>&sources=<string>&categories=sports&countries=<string>&languages=pt&keywords=<string>&date=3258-76-70,2980-19-54&sort=published_desc&limit=25&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "news"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Mediastack API access key.",
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "Comma-separated list of source identifiers to include or exclude (prefix with `-` to exclude).",
+                      "key": "sources",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of categories to include or exclude (prefix with `-` to exclude).",
+                      "key": "categories",
+                      "value": "sports"
+                    },
+                    {
+                      "description": "Comma-separated list of ISO 3166-1 alpha-2 country codes to include or exclude.",
+                      "key": "countries",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of ISO 639-1 language codes to include or exclude.",
+                      "key": "languages",
+                      "value": "pt"
+                    },
+                    {
+                      "description": "Free-text keywords to search across article title, description, and body.",
+                      "key": "keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by publication date or date range (paid plans only).\nSingle date `YYYY-MM-DD` or range `YYYY-MM-DD,YYYY-MM-DD`.\n",
+                      "key": "date",
+                      "value": "3258-76-70,2980-19-54"
+                    },
+                    {
+                      "description": "Sort order for results.",
+                      "key": "sort",
+                      "value": "published_desc"
+                    },
+                    {
+                      "description": "Number of results per page (max 100).",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Pagination offset.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"context\": {\n      \"et_08\": \"ipsum minim sit\",\n      \"in_8a_\": \"ex sed ullamco sit\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:09:03.000Z",
+              "updatedAt": "2026-07-28T02:09:03.000Z",
+              "uid": "35240-04d31730-7520-4e7d-bcb7-4a9ace6b6ba9"
+            },
+            {
+              "id": "b4fc8b84-664f-411e-92a9-99ca93b65247",
+              "name": "Function not allowed on current plan (e.g. historical data on Free).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/news?access_key=<API Key>&sources=<string>&categories=sports&countries=<string>&languages=pt&keywords=<string>&date=3258-76-70,2980-19-54&sort=published_desc&limit=25&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "news"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Mediastack API access key.",
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "Comma-separated list of source identifiers to include or exclude (prefix with `-` to exclude).",
+                      "key": "sources",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of categories to include or exclude (prefix with `-` to exclude).",
+                      "key": "categories",
+                      "value": "sports"
+                    },
+                    {
+                      "description": "Comma-separated list of ISO 3166-1 alpha-2 country codes to include or exclude.",
+                      "key": "countries",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of ISO 639-1 language codes to include or exclude.",
+                      "key": "languages",
+                      "value": "pt"
+                    },
+                    {
+                      "description": "Free-text keywords to search across article title, description, and body.",
+                      "key": "keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by publication date or date range (paid plans only).\nSingle date `YYYY-MM-DD` or range `YYYY-MM-DD,YYYY-MM-DD`.\n",
+                      "key": "date",
+                      "value": "3258-76-70,2980-19-54"
+                    },
+                    {
+                      "description": "Sort order for results.",
+                      "key": "sort",
+                      "value": "published_desc"
+                    },
+                    {
+                      "description": "Number of results per page (max 100).",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Pagination offset.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"context\": {\n      \"et_08\": \"ipsum minim sit\",\n      \"in_8a_\": \"ex sed ullamco sit\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:09:03.000Z",
+              "updatedAt": "2026-07-28T02:09:03.000Z",
+              "uid": "35240-b4fc8b84-664f-411e-92a9-99ca93b65247"
+            },
+            {
+              "id": "71819423-c0b0-4d74-909c-48f20de30b5b",
+              "name": "Monthly request quota exceeded.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/news?access_key=<API Key>&sources=<string>&categories=sports&countries=<string>&languages=pt&keywords=<string>&date=3258-76-70,2980-19-54&sort=published_desc&limit=25&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "news"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Mediastack API access key.",
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "Comma-separated list of source identifiers to include or exclude (prefix with `-` to exclude).",
+                      "key": "sources",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of categories to include or exclude (prefix with `-` to exclude).",
+                      "key": "categories",
+                      "value": "sports"
+                    },
+                    {
+                      "description": "Comma-separated list of ISO 3166-1 alpha-2 country codes to include or exclude.",
+                      "key": "countries",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of ISO 639-1 language codes to include or exclude.",
+                      "key": "languages",
+                      "value": "pt"
+                    },
+                    {
+                      "description": "Free-text keywords to search across article title, description, and body.",
+                      "key": "keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by publication date or date range (paid plans only).\nSingle date `YYYY-MM-DD` or range `YYYY-MM-DD,YYYY-MM-DD`.\n",
+                      "key": "date",
+                      "value": "3258-76-70,2980-19-54"
+                    },
+                    {
+                      "description": "Sort order for results.",
+                      "key": "sort",
+                      "value": "published_desc"
+                    },
+                    {
+                      "description": "Number of results per page (max 100).",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Pagination offset.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"context\": {\n      \"et_08\": \"ipsum minim sit\",\n      \"in_8a_\": \"ex sed ullamco sit\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:09:03.000Z",
+              "updatedAt": "2026-07-28T02:09:03.000Z",
+              "uid": "35240-71819423-c0b0-4d74-909c-48f20de30b5b"
+            },
+            {
+              "id": "65df9b38-1b6b-41ed-9a58-6be19b95e983",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/news?access_key=<API Key>&sources=<string>&categories=sports&countries=<string>&languages=pt&keywords=<string>&date=3258-76-70,2980-19-54&sort=published_desc&limit=25&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "news"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Mediastack API access key.",
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "Comma-separated list of source identifiers to include or exclude (prefix with `-` to exclude).",
+                      "key": "sources",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of categories to include or exclude (prefix with `-` to exclude).",
+                      "key": "categories",
+                      "value": "sports"
+                    },
+                    {
+                      "description": "Comma-separated list of ISO 3166-1 alpha-2 country codes to include or exclude.",
+                      "key": "countries",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of ISO 639-1 language codes to include or exclude.",
+                      "key": "languages",
+                      "value": "pt"
+                    },
+                    {
+                      "description": "Free-text keywords to search across article title, description, and body.",
+                      "key": "keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by publication date or date range (paid plans only).\nSingle date `YYYY-MM-DD` or range `YYYY-MM-DD,YYYY-MM-DD`.\n",
+                      "key": "date",
+                      "value": "3258-76-70,2980-19-54"
+                    },
+                    {
+                      "description": "Sort order for results.",
+                      "key": "sort",
+                      "value": "published_desc"
+                    },
+                    {
+                      "description": "Number of results per page (max 100).",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Pagination offset.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"context\": {\n      \"et_08\": \"ipsum minim sit\",\n      \"in_8a_\": \"ex sed ullamco sit\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:09:03.000Z",
+              "updatedAt": "2026-07-28T02:09:03.000Z",
+              "uid": "35240-65df9b38-1b6b-41ed-9a58-6be19b95e983"
+            }
+          ],
+          "createdAt": "2026-07-28T02:09:03.000Z",
+          "updatedAt": "2026-07-28T02:09:03.000Z",
+          "uid": "35240-2f092365-605c-427c-819f-6ef096a798fa"
+        }
+      ],
+      "id": "5101ffbb-8bd2-48d8-9102-1f8666f18ac4",
+      "createdAt": "2026-07-28T02:09:03.000Z",
+      "updatedAt": "2026-07-28T02:09:03.000Z",
+      "uid": "35240-5101ffbb-8bd2-48d8-9102-1f8666f18ac4"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "access_key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.mediastack.com/v1"
+    }
+  ]
+}

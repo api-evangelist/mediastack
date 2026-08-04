@@ -1,0 +1,16 @@
+{
+  "provider": "mediastack",
+  "sources": [
+    "mediastack-news-api-openapi.yml",
+    "mediastack-sources-api-openapi.yml"
+  ],
+  "outputs": [
+    "mediastack-news-api-openapi.yml",
+    "mediastack-sources-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

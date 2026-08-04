@@ -1,0 +1,331 @@
+{
+  "info": {
+    "_postman_id": "3ce24294-8513-4a45-bec2-9217aabd3e9f",
+    "name": "Mediastack News Sources API",
+    "description": "Mediastack is a free, simple REST API for live, historical, and blog news articles\naggregated from over 7,500 news sources across more than 50 countries and 13 languages.\nOperated by apilayer, mediastack exposes JSON endpoints for news search, news source\ndiscovery, and date-bounded historical news retrieval.\n\n\nContact Support:\n Name: Mediastack Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:09:04.000Z",
+    "updatedAt": "2026-07-28T02:09:05.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3ce24294-8513-4a45-bec2-9217aabd3e9f"
+  },
+  "item": [
+    {
+      "name": "sources",
+      "item": [
+        {
+          "name": "List News Sources",
+          "id": "9c504475-3c19-4d26-8169-79c5671b14b9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/sources?access_key=<string>&search=<string>&countries=<string>&languages=<string>&categories=<string>&limit=25&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "sources"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Mediastack API access key.",
+                  "key": "access_key",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Free-text search across source name and URL.",
+                  "key": "search",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of ISO 3166-1 alpha-2 country codes.",
+                  "key": "countries",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of ISO 639-1 language codes.",
+                  "key": "languages",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Comma-separated list of categories.",
+                  "key": "categories",
+                  "value": "<string>"
+                },
+                {
+                  "key": "limit",
+                  "value": "25"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Retrieve the catalog of news sources, publishers, and blogs indexed by mediastack.\nFilter by search keyword, country, language, or category to narrow the catalog.\n"
+          },
+          "response": [
+            {
+              "id": "a7b8b7ae-a260-4981-bb26-5c520165c61e",
+              "name": "Paginated list of news sources.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sources?access_key=<API Key>&search=<string>&countries=<string>&languages=<string>&categories=<string>&limit=25&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sources"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Mediastack API access key.",
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "Free-text search across source name and URL.",
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of ISO 3166-1 alpha-2 country codes.",
+                      "key": "countries",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of ISO 639-1 language codes.",
+                      "key": "languages",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of categories.",
+                      "key": "categories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"pagination\": {\n    \"limit\": \"<integer>\",\n    \"offset\": \"<integer>\",\n    \"count\": \"<integer>\",\n    \"total\": \"<integer>\"\n  },\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"category\": \"<string>\",\n      \"country\": \"<string>\",\n      \"language\": \"<string>\",\n      \"url\": \"<uri>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"category\": \"<string>\",\n      \"country\": \"<string>\",\n      \"language\": \"<string>\",\n      \"url\": \"<uri>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:09:05.000Z",
+              "updatedAt": "2026-07-28T02:09:05.000Z",
+              "uid": "35240-a7b8b7ae-a260-4981-bb26-5c520165c61e"
+            },
+            {
+              "id": "39774744-3f30-435c-9bcb-dd56f82d4b73",
+              "name": "Missing or invalid API access key.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sources?access_key=<API Key>&search=<string>&countries=<string>&languages=<string>&categories=<string>&limit=25&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sources"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Mediastack API access key.",
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "Free-text search across source name and URL.",
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of ISO 3166-1 alpha-2 country codes.",
+                      "key": "countries",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of ISO 639-1 language codes.",
+                      "key": "languages",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of categories.",
+                      "key": "categories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"context\": {\n      \"incididunt_031\": 20932383\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:09:05.000Z",
+              "updatedAt": "2026-07-28T02:09:05.000Z",
+              "uid": "35240-39774744-3f30-435c-9bcb-dd56f82d4b73"
+            },
+            {
+              "id": "33749a2b-f193-4dc1-bb3c-709b3aa53645",
+              "name": "Monthly request quota exceeded.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sources?access_key=<API Key>&search=<string>&countries=<string>&languages=<string>&categories=<string>&limit=25&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sources"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Mediastack API access key.",
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "Free-text search across source name and URL.",
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of ISO 3166-1 alpha-2 country codes.",
+                      "key": "countries",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of ISO 639-1 language codes.",
+                      "key": "languages",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Comma-separated list of categories.",
+                      "key": "categories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"context\": {\n      \"incididunt_031\": 20932383\n    }\n  }\n}",
+              "createdAt": "2026-07-28T02:09:05.000Z",
+              "updatedAt": "2026-07-28T02:09:05.000Z",
+              "uid": "35240-33749a2b-f193-4dc1-bb3c-709b3aa53645"
+            }
+          ],
+          "createdAt": "2026-07-28T02:09:05.000Z",
+          "updatedAt": "2026-07-28T02:09:05.000Z",
+          "uid": "35240-9c504475-3c19-4d26-8169-79c5671b14b9"
+        }
+      ],
+      "id": "6fd93ef9-7424-461d-a678-0c76ff38af79",
+      "createdAt": "2026-07-28T02:09:05.000Z",
+      "updatedAt": "2026-07-28T02:09:05.000Z",
+      "uid": "35240-6fd93ef9-7424-461d-a678-0c76ff38af79"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "access_key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.mediastack.com/v1"
+    }
+  ]
+}
