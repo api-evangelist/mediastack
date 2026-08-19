@@ -1,0 +1,329 @@
+{
+  "item": [
+    {
+      "id": "3161db2b-f87f-4910-a48d-5971efef83b8",
+      "name": "Sources",
+      "description": {
+        "content": "Discovery of supported news sources, publishers, and blogs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4b35cc10-49a4-4d2a-8c4d-dff4f130a281",
+          "name": "List News Sources",
+          "request": {
+            "name": "List News Sources",
+            "description": {
+              "content": "Retrieve the catalog of news sources, publishers, and blogs indexed by mediastack.\nFilter by search keyword, country, language, or category to narrow the catalog.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "access_key",
+                  "value": "<string>",
+                  "description": "(Required) Mediastack API access key."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Free-text search across source name and URL."
+                },
+                {
+                  "disabled": false,
+                  "key": "countries",
+                  "value": "<string>",
+                  "description": "Comma-separated list of ISO 3166-1 alpha-2 country codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "languages",
+                  "value": "<string>",
+                  "description": "Comma-separated list of ISO 639-1 language codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "categories",
+                  "value": "<string>",
+                  "description": "Comma-separated list of categories."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1e4680a0-4985-4257-ba2a-66837303e6b8",
+              "name": "Paginated list of news sources.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countries",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "languages",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pagination\": {\n    \"limit\": 25,\n    \"offset\": 0,\n    \"count\": 25,\n    \"total\": 10342\n  },\n  \"data\": [\n    {\n      \"id\": \"cnn\",\n      \"name\": \"CNN\",\n      \"category\": \"general\",\n      \"country\": \"us\",\n      \"language\": \"en\",\n      \"url\": \"https://www.cnn.com\"\n    },\n    {\n      \"id\": \"cnn\",\n      \"name\": \"CNN\",\n      \"category\": \"general\",\n      \"country\": \"us\",\n      \"language\": \"en\",\n      \"url\": \"https://www.cnn.com\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed47ba4d-823c-4bf7-9893-f61ffb0337e7",
+              "name": "Missing or invalid API access key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countries",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "languages",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": {\n    \"code\": \"invalid_access_key\",\n    \"message\": \"You have not supplied a valid API Access Key.\",\n    \"context\": {\n      \"key_0\": 8059,\n      \"key_1\": \"string\",\n      \"key_2\": \"string\",\n      \"key_3\": 3700.2705747440555\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7174303-bb70-4375-8f36-d0aa49c7a03d",
+              "name": "Monthly request quota exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countries",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "languages",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "access_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": {\n    \"code\": \"invalid_access_key\",\n    \"message\": \"You have not supplied a valid API Access Key.\",\n    \"context\": {\n      \"key_0\": 8059,\n      \"key_1\": \"string\",\n      \"key_2\": \"string\",\n      \"key_3\": 3700.2705747440555\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mediastack.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "access_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "590d3aa3-34cb-4a7b-88d0-3d8cf32b6490",
+    "name": "Mediastack News Sources API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Mediastack is a free, simple REST API for live, historical, and blog news articles\naggregated from over 7,500 news sources across more than 50 countries and 13 languages.\nOperated by apilayer, mediastack exposes JSON endpoints for news search, news source\ndiscovery, and date-bounded historical news retrieval.\n\n\nContact Support:\n Name: Mediastack Support",
+      "type": "text/plain"
+    }
+  }
+}

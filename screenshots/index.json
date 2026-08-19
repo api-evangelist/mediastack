@@ -6,5 +6,14 @@
     "source_type": "Portal",
     "file": "mediastack-2026-06-20T185116.png",
     "bytes": 253234
+  },
+  {
+    "repo": "mediastack",
+    "captured_at": "2026-08-17T124139",
+    "source_url": "https://mediastack.com",
+    "source_type": "root-domain",
+    "file": "mediastack-2026-08-17T124139.png",
+    "bytes": 268957,
+    "capture": "playwright-local"
   }
 ]

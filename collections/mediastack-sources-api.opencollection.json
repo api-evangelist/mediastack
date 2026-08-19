@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Mediastack News Sources API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "access_key",
+      "value": "{{access_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sources",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List News Sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mediastack.com/v1/sources",
+            "params": [
+              {
+                "name": "access_key",
+                "value": "",
+                "type": "query",
+                "description": "Mediastack API access key."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Free-text search across source name and URL."
+              },
+              {
+                "name": "countries",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of ISO 3166-1 alpha-2 country codes."
+              },
+              {
+                "name": "languages",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of ISO 639-1 language codes."
+              },
+              {
+                "name": "categories",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of categories."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve the catalog of news sources, publishers, and blogs indexed by mediastack.\nFilter by search keyword, country, language, or category to narrow the catalog.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
