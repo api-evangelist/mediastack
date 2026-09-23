@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Mediastack News Sources API
   description: 'Mediastack is a free, simple REST API for live, historical, and blog news articles
@@ -7,9 +7,7 @@ info:
 
     Operated by apilayer, mediastack exposes JSON endpoints for news search, news source
 
-    discovery, and date-bounded historical news retrieval.
-
-    '
+    discovery, and date-bounded historical news retrieval.'
   version: 1.0.0
   contact:
     name: Mediastack Support
@@ -37,9 +35,7 @@ paths:
       summary: List News Sources
       description: 'Retrieve the catalog of news sources, publishers, and blogs indexed by mediastack.
 
-        Filter by search keyword, country, language, or category to narrow the catalog.
-
-        '
+        Filter by search keyword, country, language, or category to narrow the catalog.'
       operationId: listSources
       parameters:
       - $ref: '#/components/parameters/AccessKey'
@@ -131,6 +127,18 @@ components:
           type: string
           format: uri
           example: https://www.cnn.com
+    SourcesResponse:
+      type: object
+      required:
+      - pagination
+      - data
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Source'
     Pagination:
       type: object
       properties:
@@ -164,21 +172,10 @@ components:
               type: string
               example: You have not supplied a valid API Access Key.
             context:
-              type: object
+              type:
+              - object
+              - 'null'
               additionalProperties: true
-              nullable: true
-    SourcesResponse:
-      type: object
-      required:
-      - pagination
-      - data
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Source'
   parameters:
     AccessKey:
       name: access_key
