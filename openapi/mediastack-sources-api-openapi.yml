@@ -91,19 +91,36 @@ paths:
           $ref: '#/components/responses/RateLimited'
 components:
   responses:
-    RateLimited:
-      description: Monthly request quota exceeded.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Missing or invalid API access key.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    RateLimited:
+      description: Monthly request quota exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    Pagination:
+      type: object
+      properties:
+        limit:
+          type: integer
+          example: 25
+        offset:
+          type: integer
+          example: 0
+        count:
+          type: integer
+          description: Number of records returned in the current page.
+          example: 25
+        total:
+          type: integer
+          description: Total records matching the query.
+          example: 10342
     Source:
       type: object
       properties:
@@ -139,23 +156,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Source'
-    Pagination:
-      type: object
-      properties:
-        limit:
-          type: integer
-          example: 25
-        offset:
-          type: integer
-          example: 0
-        count:
-          type: integer
-          description: Number of records returned in the current page.
-          example: 25
-        total:
-          type: integer
-          description: Total records matching the query.
-          example: 10342
     Error:
       type: object
       properties:

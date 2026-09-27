@@ -155,8 +155,8 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   responses:
-    RateLimited:
-      description: Monthly request quota exceeded.
+    ServerError:
+      description: Internal server error.
       content:
         application/json:
           schema:
@@ -167,19 +167,44 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    ServerError:
-      description: Internal server error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     Forbidden:
       description: Function not allowed on current plan (e.g. historical data on Free).
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    RateLimited:
+      description: Monthly request quota exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    AccessKey:
+      name: access_key
+      in: query
+      required: true
+      description: Mediastack API access key.
+      schema:
+        type: string
   schemas:
+    Pagination:
+      type: object
+      properties:
+        limit:
+          type: integer
+          example: 25
+        offset:
+          type: integer
+          example: 0
+        count:
+          type: integer
+          description: Number of records returned in the current page.
+          example: 25
+        total:
+          type: integer
+          description: Total records matching the query.
+          example: 10342
     NewsArticle:
       type: object
       properties:
@@ -246,23 +271,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/NewsArticle'
-    Pagination:
-      type: object
-      properties:
-        limit:
-          type: integer
-          example: 25
-        offset:
-          type: integer
-          example: 0
-        count:
-          type: integer
-          description: Number of records returned in the current page.
-          example: 25
-        total:
-          type: integer
-          description: Total records matching the query.
-          example: 10342
     Error:
       type: object
       properties:
@@ -283,14 +291,6 @@ components:
               - object
               - 'null'
               additionalProperties: true
-  parameters:
-    AccessKey:
-      name: access_key
-      in: query
-      required: true
-      description: Mediastack API access key.
-      schema:
-        type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
