@@ -154,31 +154,6 @@ paths:
         '500':
           $ref: '#/components/responses/ServerError'
 components:
-  responses:
-    ServerError:
-      description: Internal server error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or invalid API access key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Forbidden:
-      description: Function not allowed on current plan (e.g. historical data on Free).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    RateLimited:
-      description: Monthly request quota exceeded.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
     AccessKey:
       name: access_key
@@ -188,6 +163,38 @@ components:
       schema:
         type: string
   schemas:
+    NewsResponse:
+      type: object
+      required:
+      - pagination
+      - data
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/NewsArticle'
+    Error:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              example: invalid_access_key
+            message:
+              type: string
+              example: You have not supplied a valid API Access Key.
+            context:
+              type:
+              - object
+              - 'null'
+              additionalProperties: true
     Pagination:
       type: object
       properties:
@@ -259,38 +266,31 @@ components:
           type: string
           format: date-time
           example: '2026-05-28T14:32:00+00:00'
-    NewsResponse:
-      type: object
-      required:
-      - pagination
-      - data
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/NewsArticle'
-    Error:
-      type: object
-      properties:
-        success:
-          type: boolean
-          example: false
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              example: invalid_access_key
-            message:
-              type: string
-              example: You have not supplied a valid API Access Key.
-            context:
-              type:
-              - object
-              - 'null'
-              additionalProperties: true
+  responses:
+    Forbidden:
+      description: Function not allowed on current plan (e.g. historical data on Free).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    RateLimited:
+      description: Monthly request quota exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid API access key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
