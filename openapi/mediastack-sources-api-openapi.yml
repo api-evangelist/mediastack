@@ -90,43 +90,28 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
+  parameters:
+    AccessKey:
+      name: access_key
+      in: query
+      required: true
+      description: Mediastack API access key.
+      schema:
+        type: string
   responses:
-    RateLimited:
-      description: Monthly request quota exceeded.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Missing or invalid API access key.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    RateLimited:
+      description: Monthly request quota exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Source:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Stable source identifier.
-          example: cnn
-        name:
-          type: string
-          example: CNN
-        category:
-          type: string
-          example: general
-        country:
-          type: string
-          example: us
-        language:
-          type: string
-          example: en
-        url:
-          type: string
-          format: uri
-          example: https://www.cnn.com
     SourcesResponse:
       type: object
       required:
@@ -156,6 +141,29 @@ components:
           type: integer
           description: Total records matching the query.
           example: 10342
+    Source:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Stable source identifier.
+          example: cnn
+        name:
+          type: string
+          example: CNN
+        category:
+          type: string
+          example: general
+        country:
+          type: string
+          example: us
+        language:
+          type: string
+          example: en
+        url:
+          type: string
+          format: uri
+          example: https://www.cnn.com
     Error:
       type: object
       properties:
@@ -176,14 +184,6 @@ components:
               - object
               - 'null'
               additionalProperties: true
-  parameters:
-    AccessKey:
-      name: access_key
-      in: query
-      required: true
-      description: Mediastack API access key.
-      schema:
-        type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

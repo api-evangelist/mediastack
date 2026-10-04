@@ -155,8 +155,8 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   responses:
-    RateLimited:
-      description: Monthly request quota exceeded.
+    Forbidden:
+      description: Function not allowed on current plan (e.g. historical data on Free).
       content:
         application/json:
           schema:
@@ -173,12 +173,20 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Forbidden:
-      description: Function not allowed on current plan (e.g. historical data on Free).
+    RateLimited:
+      description: Monthly request quota exceeded.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+  parameters:
+    AccessKey:
+      name: access_key
+      in: query
+      required: true
+      description: Mediastack API access key.
+      schema:
+        type: string
   schemas:
     NewsArticle:
       type: object
@@ -234,18 +242,6 @@ components:
           type: string
           format: date-time
           example: '2026-05-28T14:32:00+00:00'
-    NewsResponse:
-      type: object
-      required:
-      - pagination
-      - data
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/NewsArticle'
     Pagination:
       type: object
       properties:
@@ -263,6 +259,18 @@ components:
           type: integer
           description: Total records matching the query.
           example: 10342
+    NewsResponse:
+      type: object
+      required:
+      - pagination
+      - data
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/NewsArticle'
     Error:
       type: object
       properties:
@@ -283,14 +291,6 @@ components:
               - object
               - 'null'
               additionalProperties: true
-  parameters:
-    AccessKey:
-      name: access_key
-      in: query
-      required: true
-      description: Mediastack API access key.
-      schema:
-        type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
