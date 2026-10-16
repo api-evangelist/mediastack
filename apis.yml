@@ -43,6 +43,9 @@ x-source: public-apis/public-apis
 x-category: News
 x-tier: 2
 x-tier-reason: company-tiered-commercial-news-aggregation
+x-docs-platform: redoc
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-10-04
 tags:
   - News
   - News Aggregation
