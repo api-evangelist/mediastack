@@ -98,32 +98,27 @@ components:
       description: Mediastack API access key.
       schema:
         type: string
-  responses:
-    Unauthorized:
-      description: Missing or invalid API access key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    RateLimited:
-      description: Monthly request quota exceeded.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    SourcesResponse:
+    Error:
       type: object
-      required:
-      - pagination
-      - data
       properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Source'
+        success:
+          type: boolean
+          example: false
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              example: invalid_access_key
+            message:
+              type: string
+              example: You have not supplied a valid API Access Key.
+            context:
+              type:
+              - object
+              - 'null'
+              additionalProperties: true
     Pagination:
       type: object
       properties:
@@ -164,26 +159,31 @@ components:
           type: string
           format: uri
           example: https://www.cnn.com
-    Error:
+    SourcesResponse:
       type: object
+      required:
+      - pagination
+      - data
       properties:
-        success:
-          type: boolean
-          example: false
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              example: invalid_access_key
-            message:
-              type: string
-              example: You have not supplied a valid API Access Key.
-            context:
-              type:
-              - object
-              - 'null'
-              additionalProperties: true
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Source'
+  responses:
+    RateLimited:
+      description: Monthly request quota exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid API access key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
