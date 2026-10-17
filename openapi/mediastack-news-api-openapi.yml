@@ -154,27 +154,7 @@ paths:
         '500':
           $ref: '#/components/responses/ServerError'
 components:
-  parameters:
-    AccessKey:
-      name: access_key
-      in: query
-      required: true
-      description: Mediastack API access key.
-      schema:
-        type: string
   schemas:
-    NewsResponse:
-      type: object
-      required:
-      - pagination
-      - data
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/NewsArticle'
     Error:
       type: object
       properties:
@@ -195,23 +175,18 @@ components:
               - object
               - 'null'
               additionalProperties: true
-    Pagination:
+    NewsResponse:
       type: object
+      required:
+      - pagination
+      - data
       properties:
-        limit:
-          type: integer
-          example: 25
-        offset:
-          type: integer
-          example: 0
-        count:
-          type: integer
-          description: Number of records returned in the current page.
-          example: 25
-        total:
-          type: integer
-          description: Total records matching the query.
-          example: 10342
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/NewsArticle'
     NewsArticle:
       type: object
       properties:
@@ -266,15 +241,26 @@ components:
           type: string
           format: date-time
           example: '2026-05-28T14:32:00+00:00'
+    Pagination:
+      type: object
+      properties:
+        limit:
+          type: integer
+          example: 25
+        offset:
+          type: integer
+          example: 0
+        count:
+          type: integer
+          description: Number of records returned in the current page.
+          example: 25
+        total:
+          type: integer
+          description: Total records matching the query.
+          example: 10342
   responses:
-    Forbidden:
-      description: Function not allowed on current plan (e.g. historical data on Free).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ServerError:
-      description: Internal server error.
+    Unauthorized:
+      description: Missing or invalid API access key.
       content:
         application/json:
           schema:
@@ -285,12 +271,26 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or invalid API access key.
+    ServerError:
+      description: Internal server error.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Function not allowed on current plan (e.g. historical data on Free).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    AccessKey:
+      name: access_key
+      in: query
+      required: true
+      description: Mediastack API access key.
+      schema:
+        type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

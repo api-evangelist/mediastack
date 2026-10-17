@@ -90,14 +90,6 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
-  parameters:
-    AccessKey:
-      name: access_key
-      in: query
-      required: true
-      description: Mediastack API access key.
-      schema:
-        type: string
   schemas:
     Error:
       type: object
@@ -119,23 +111,18 @@ components:
               - object
               - 'null'
               additionalProperties: true
-    Pagination:
+    SourcesResponse:
       type: object
+      required:
+      - pagination
+      - data
       properties:
-        limit:
-          type: integer
-          example: 25
-        offset:
-          type: integer
-          example: 0
-        count:
-          type: integer
-          description: Number of records returned in the current page.
-          example: 25
-        total:
-          type: integer
-          description: Total records matching the query.
-          example: 10342
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Source'
     Source:
       type: object
       properties:
@@ -159,31 +146,44 @@ components:
           type: string
           format: uri
           example: https://www.cnn.com
-    SourcesResponse:
+    Pagination:
       type: object
-      required:
-      - pagination
-      - data
       properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Source'
+        limit:
+          type: integer
+          example: 25
+        offset:
+          type: integer
+          example: 0
+        count:
+          type: integer
+          description: Number of records returned in the current page.
+          example: 25
+        total:
+          type: integer
+          description: Total records matching the query.
+          example: 10342
   responses:
-    RateLimited:
-      description: Monthly request quota exceeded.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Missing or invalid API access key.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    RateLimited:
+      description: Monthly request quota exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    AccessKey:
+      name: access_key
+      in: query
+      required: true
+      description: Mediastack API access key.
+      schema:
+        type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
