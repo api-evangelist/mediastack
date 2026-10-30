@@ -1,4 +1,4 @@
-# Mediastack (mediastack)
+# Mediastack
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,78 +66,166 @@
 
 Mediastack is a free and paid REST API by apilayer for live, historical, and blog news articles aggregated from more than 7,500 publishers across 50+ countries and 13 languages. It exposes a /v1/news endpoint for keyword-, source-, country-, language-, category-, and date-filtered search, and a /v1/sources endpoint for browsing the underlying publisher catalog.
 
-**APIs.json:** [https://mediastack.com](https://mediastack.com)
+**Areas:** News · News Aggregation · Media · APILayer · Public APIs
 
-## Tags
+## Mediastack on APIs.io
 
-- News
-- News Aggregation
-- Media
-- Apilayer
-- Public APIs
+Everything profiled for Mediastack is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/mediastack/](https://apis.io/providers/mediastack/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (2)
 
-- **Created:** 2026-05-28
-- **Modified:** 2026-05-30
+- [Mediastack News API](https://apis.io/apis/mediastack/mediastack-news-api/) — Live and historical news articles from global publishers.
+- [Mediastack Sources API](https://apis.io/apis/mediastack/mediastack-sources-api/) — Discovery of supported news sources, publishers, and blogs.
 
-## APIs
+### Published properties
 
-### Mediastack News API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Live, historical, and blog news search plus publisher source discovery. Returns JSON with a pagination + data envelope, secured by an access_key query parameter.
+#### Agentic access (1)
 
-- **Human URL:** [https://mediastack.com/documentation](https://mediastack.com/documentation)
-- **Base URL:** `https://api.mediastack.com/v1`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Mediastack Agentic Access](https://apis.io/agentic-access/mediastack/mediastack-agentic-access/)
 
-- News
-- Sources
+#### JSON Schema (4)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://docs.apilayer.com/mediastack/docs/api-documentation)
-- [API Reference](https://mediastack.com/documentation)
-- [Quickstart](https://mediastack.com/documentation#quickstart)
-- [Authentication](https://mediastack.com/documentation#authentication)
-- [OpenAPI](openapi/mediastack-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/mediastack.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mediastack.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/mediastack-news-article-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/mediastack-source-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/mediastack-pagination-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/mediastack-error-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/mediastack-news-article-structure.json)
-- [JSON Structure](json-structure/mediastack-source-structure.json)
-- [Example](examples/mediastack-search-news-example.json)
-- [Example](examples/mediastack-list-sources-example.json)
-- [Example](examples/mediastack-historical-news-example.json)
+- [Error](https://apis.io/schemas/mediastack/mediastack-error/)
+- [NewsArticle](https://apis.io/schemas/mediastack/mediastack-news-article/)
+- [Pagination](https://apis.io/schemas/mediastack/mediastack-pagination/)
+- [Source](https://apis.io/schemas/mediastack/mediastack-source/)
 
-## Common Properties
+#### JSON Structure (2)
+
+Data models expressed in JSON Structure.
+
+- [Mediastack News Article Structure](https://apis.io/json-structure/mediastack/mediastack-news-article-structure/)
+- [Mediastack Source Structure](https://apis.io/json-structure/mediastack/mediastack-source-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Mediastack Context](https://apis.io/jsonld/mediastack/mediastack-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Mediastack Vocabulary](https://apis.io/vocabularies/mediastack/mediastack-vocabulary/)
+
+#### Examples (3)
+
+Example requests and responses.
+
+- [Mediastack Historical News Example](https://apis.io/examples/mediastack/mediastack-historical-news-example/)
+- [Mediastack List Sources Example](https://apis.io/examples/mediastack/mediastack-list-sources-example/)
+- [Mediastack Search News Example](https://apis.io/examples/mediastack/mediastack-search-news-example/)
+
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [Mediastack News API](https://apis.io/collections/mediastack/open-mediastack/)
+- [Mediastack News API](https://apis.io/collections/mediastack/open-mediastack-news-api/)
+- [Mediastack News Sources API](https://apis.io/collections/mediastack/open-mediastack-sources-api/)
+- [Mediastack News API](https://apis.io/collections/mediastack/postman-mediastack-news-api/)
+- [Mediastack News Sources API](https://apis.io/collections/mediastack/postman-mediastack-sources-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Mediastack — jsonschema rules](https://apis.io/rules/mediastack/mediastack-jsonschema-spectral-rules/)
+- [Mediastack API Rules](https://apis.io/rules/mediastack/mediastack-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Mediastack Authentication](https://apis.io/security/mediastack/mediastack-authentication/)
+- [Mediastack Domain Security](https://apis.io/security/mediastack/mediastack-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Mediastack Plans Pricing](https://apis.io/plans/mediastack/mediastack-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Mediastack Rate Limits](https://apis.io/rate-limits/mediastack/mediastack-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Mediastack Finops](https://apis.io/finops/mediastack/mediastack-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://mediastack.com)
-- [Portal](https://mediastack.com/dashboard)
-- [Sign Up](https://mediastack.com/signup/free)
 - [Pricing](https://mediastack.com/product)
-- [Terms of Service](https://mediastack.com/terms)
-- [Privacy Policy](https://mediastack.com/privacy)
 - [Support](https://mediastack.com/contact)
-- [F A Q](https://mediastack.com/documentation#faq)
-- [GitHub Repository](https://github.com/apilayer/mediastack)
-- [Public APIs Listing](https://github.com/public-apis/public-apis)
-- [J S O N- L D](json-ld/mediastack-context.jsonld)
-- [Spectral Rules](rules/mediastack-rules.yml)
-- [Vocabulary](vocabulary/mediastack-vocabulary.yml)
-- [Plans](plans/mediastack-plans-pricing.yml)
-- [Rate Limits](rate-limits/mediastack-rate-limits.yml)
-- [Fin Ops](finops/mediastack-finops.yml)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Solutions](undefined)
+- [Terms of service](https://mediastack.com/terms)
+- [Privacy policy](https://mediastack.com/privacy)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 51.4** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 63.9 |
+| Contract governance | 27.3 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 56.0 |
+| Access clarity | 52.6 |
+
+**Agent readiness 29.5** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/mediastack/](https://apis.io/providers/mediastack/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Mediastack: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/mediastack/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
